@@ -1,11 +1,11 @@
-# Welcome to Revel
+# Welcome to flint-tools
 
-A high-productivity web framework for the [Go language](http://www.golang.org/).
+A tool for generating and collating statistics and insights to the flint ult footy fantasy league.
 
 
-### Start the web server:
+### Start the backend:
 
-   revel run myapp
+   go run server.go
 
 ### Go to http://localhost:9000/ and you'll see:
 

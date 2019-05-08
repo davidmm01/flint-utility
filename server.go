@@ -1,29 +1,21 @@
-package controllers
+package main
 
 import (
 	"database/sql"
 	"log"
-	"time"
+	"net/http"
 
 	"github.com/go-gorp/gorp"
-	// blank '_' import: used in code only as a string, lint will not detect usage and delete the import.
-	// With the blank import, it wont get deleted by lint
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/revel/revel"
+	"github.com/labstack/echo"
 )
 
-// "github.com/revel/revel"
-// "database/sql"
-// "github.com/go-gorp/gorp"
-// "github.com/go-sql-driver/mysql"
-// "log"
-// "time"
+func main() {
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
 
-type App struct {
-	*revel.Controller
-}
-
-func (c App) Index() revel.Result {
 	println("pre init db")
 	dbmap := initDb()
 
@@ -36,28 +28,7 @@ func (c App) Index() revel.Result {
 
 	defer dbmap.Db.Close()
 
-	return c.Render()
-}
-
-type TestTable struct {
-	id    int
-	value string
-}
-
-type Post struct {
-	// db tag lets you specify the column name if it differs from the struct field
-	Id      int64 `db:"post_id"`
-	Created int64
-	Title   string `db:",size:50"`               // Column size set to 50
-	Body    string `db:"article_body,size:1024"` // Set both column name and size
-}
-
-func newPost(title, body string) Post {
-	return Post{
-		Created: time.Now().UnixNano(),
-		Title:   title,
-		Body:    body,
-	}
+	e.Logger.Fatal(e.Start(":1323"))
 }
 
 func initDb() *gorp.DbMap {
@@ -89,4 +60,9 @@ func checkErr(err error, msg string) {
 	if err != nil {
 		log.Fatalln(msg, err)
 	}
+}
+
+type TestTable struct {
+	id    int
+	value string
 }
