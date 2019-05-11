@@ -20,10 +20,11 @@ formatter_feeder_files = [
     "formatter_feeder_rd_4.txt",
     "formatter_feeder_rd_5.txt",
     "formatter_feeder_rd_6.txt",
-    # "formatter_feeder_rd_7.txt",
+    "formatter_feeder_rd_7.txt",
+    # "formatter_feeder_rd_8.txt",
 ]
 
-# mapping for going from team name to a coach id as per my coach database
+# mapping for going from team name to a coach id as per coach database
 coach_map = {
     'Stand By Crouch': "'jim'",
     'Green Heinekens': "'schlong'",
@@ -43,6 +44,9 @@ coach_map = {
     "Ardern's Army": "'steve'",
     'flamingos': "'davo'",
     'PASSWORD IS BAYSIDE': "'bark'",
+    'Yablett': "'staff'",
+    'Swimming... And Tits': "'milbs'",
+    'BunkoutWithBurnout!': "'frank'"
 }
 
 print(f'--inserts for round_score table')
@@ -99,7 +103,7 @@ for file in formatter_feeder_files:
     for i in range(9):
         coach_1 = coach_map[f.readline().split('\t')[0].strip()]
         coach_2 = coach_map[f.readline().split('\t')[0].strip()]
-        sql = "INSERT INTO round_matchup (rm_round, rm_year, rm_coach_1, rm_coach_2) VALUES ("
+        sql = "INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES ("
         sql += f"{round}, {year}, {coach_1}, {coach_2});"
         print(sql)
     f.close()
