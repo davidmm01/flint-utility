@@ -14,14 +14,16 @@ Add the correctly formatted file to the formatter_feeder_files array below
 """
 
 formatter_feeder_files = [
-    "formatter_feeder_rd_1.txt",
-    "formatter_feeder_rd_2.txt",
-    "formatter_feeder_rd_3.txt",
-    "formatter_feeder_rd_4.txt",
-    "formatter_feeder_rd_5.txt",
-    "formatter_feeder_rd_6.txt",
-    "formatter_feeder_rd_7.txt",
+    # "formatter_feeder_rd_1.txt",
+    # "formatter_feeder_rd_2.txt",
+    # "formatter_feeder_rd_3.txt",
+    # "formatter_feeder_rd_4.txt",
+    # "formatter_feeder_rd_5.txt",
+    # "formatter_feeder_rd_6.txt",
+    # "formatter_feeder_rd_7.txt",
     # "formatter_feeder_rd_8.txt",
+    # "formatter_feeder_rd_9.txt",
+    # "formatter_feeder_rd_10.txt",
 ]
 
 # mapping for going from team name to a coach id as per coach database
@@ -46,7 +48,8 @@ coach_map = {
     'PASSWORD IS BAYSIDE': "'bark'",
     'Yablett': "'staff'",
     'Swimming... And Tits': "'milbs'",
-    'BunkoutWithBurnout!': "'frank'"
+    'BunkoutWithBurnout!': "'frank'",
+    'Disown Team': "'milbs'",
 }
 
 print(f'--inserts for round_score table')

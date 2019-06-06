@@ -93,5 +93,38 @@ INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) 
 INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'kev', 'calv');
 INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'gab', 'steve');
 INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'davo', 'bark');
---<<HAS BEEN RUN IN DB
 
+--round 8 2019
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'karl', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'milbs', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'schlong', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'frank', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'doe', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'jim', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'staff', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'kev', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'davo', 'steve');
+
+--round 9 2019
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'schlong', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'jim', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'staff', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'kev', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'salc', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'milbs', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'sam', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'frank', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'doe', 'gab');
+
+--round 10 2019
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'fewy', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'sam', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'milbs', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'gab', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'frank', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'doe', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'jim', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'staff', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'schlong', 'shust');
+
+--<<HAS BEEN RUN IN DB

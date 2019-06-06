@@ -4,11 +4,19 @@ A web app for generating and collating statistics and insights to the flint ult 
 This is a hacktastic project, made with go and react by someone who has never used either of them.  Its just as much about learning these techs as it is about making something awesome!
 
 
+### Current process for adding new round data
+1) Create a file called something like "formatter_feeder_rd_x.txt" in the scripts folder (split this out into years eventually)
+2) Copy and paste the right blobs from the ult footy website 
+3) manipulate the array 'formatter_feeder_files' in the script 'formatter.py' for the desired target(s)
+4) check and make sure all team names are covered by the dict 'coach_map' in 'formatter.py'
+5) run formatter.py and run the generated sql in the db
+
+
 ### Start the backend:
 
    go run *.go
 
-running on port 1323
+runs on port 1323
 
 
 ### Start the frontend:
@@ -16,15 +24,15 @@ running on port 1323
    cd frontend
    npm start
 
-running on port 3000
+runs on port 3000
 
 
-### Run the tests
+### Run the backend tests
 
    go test
 
 
-### Stack
+### Stack info
 
 Backend: echo (minimalist microservice framework for golang)
 Frontend: react (javascript library/framework)
@@ -40,3 +48,14 @@ Externals include gorp (db orm), echo (minimal framework), go-sql-driver/mysql, 
 ### Code Layout
 
 Directory sql contains history of the data pushed in
+
+
+### Mysql ref
+
+start:
+   sudo mysql 
+
+connect to the FLINT database:
+   connect FLINT
+
+Then go nuts with sql
