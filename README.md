@@ -14,7 +14,7 @@ This is a hacktastic project, made with go and react by someone who has never us
 
 ### Start the backend:
 
-   go run *.go
+   go run server.go db.go models.go coach.go
 
 runs on port 1323
 
@@ -22,6 +22,7 @@ runs on port 1323
 ### Start the frontend:
 
    cd frontend
+   
    npm start
 
 runs on port 3000
@@ -35,14 +36,19 @@ runs on port 3000
 ### Stack info
 
 Backend: echo (minimalist microservice framework for golang)
+
 Frontend: react (javascript library/framework)
+
 Database: mysql
 
 
 ### Go Packages
 
 flint-utility itself only contains main so far (consider creating a models or a database package if they grow complex)
+
 Externals include gorp (db orm), echo (minimal framework), go-sql-driver/mysql, stretchr/testify (nice asserts/testing support)
+
+Need dgrijalva/jwt-go for cors middleware
 
 
 ### Code Layout
@@ -53,9 +59,11 @@ Directory sql contains history of the data pushed in
 ### Mysql ref
 
 start:
+
    sudo mysql 
 
 connect to the FLINT database:
+
    connect FLINT
 
 Then go nuts with sql
