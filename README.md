@@ -14,7 +14,7 @@ This is a hacktastic project, made with go and react by someone who has never us
 
 ### Start the backend:
 
-   go run server.go db.go models.go coach.go
+   go run server.go db.go models.go coach.go round.go
 
 runs on port 1323
 
