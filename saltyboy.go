@@ -6,11 +6,13 @@ import (
 	"github.com/go-gorp/gorp"
 )
 
+// SaltyMeta contains metadata of the round, returned by saltyboy round endpoint
 type SaltyMeta struct {
 	Year  int
 	Round int
 }
 
+// SaltyCoach contains data on the coach that is being queried by saltyboy endpoint
 type SaltyCoach struct {
 	Coach          string
 	ActualOutcome  string
@@ -21,6 +23,7 @@ type SaltyCoach struct {
 	SaltyScores    SaltyScores
 }
 
+// SaltyScores are an exported version of the roundScore model, with only required fields
 type SaltyScores struct {
 	Score               int
 	Kicks               int
@@ -35,12 +38,14 @@ type SaltyScores struct {
 	Spoils              int
 }
 
+// SaltyOpponent represents an opponent of the salty coach, returned by saltyboy endpoint
 type SaltyOpponent struct {
 	Opponent    string
 	Outcome     string
 	SaltyScores SaltyScores
 }
 
+// SaltyboyPayload is the top level of the structure returned by saltyboy round endpoint
 type SaltyboyPayload struct {
 	SaltyMeta      SaltyMeta
 	SaltyCoach     SaltyCoach
