@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"strconv"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -21,7 +23,7 @@ func main() {
 	// health check
 	e.GET("/", func(c echo.Context) error {
 		// TODO: unit test for this endpoint
-		return c.String(http.StatusOK, "Hello there mr frontend!")
+		return c.String(http.StatusOK, "Backend is alive")
 	})
 
 	// season endpoints
@@ -37,24 +39,15 @@ func main() {
 		return c.JSON(http.StatusOK, coaches)
 	})
 
-	// saltyboy endpoints
-	e.GET("/saltyboy/:coach", func(c echo.Context) error {
+	// saltyboy endpoint
+	e.GET("/saltyboy/round", func(c echo.Context) error {
 		// TODO: unit test for this endpoint
-		coach := c.Param("coach")
-		opponents := getOpponents(dbmap, coach)
-		year := getCurrentSeason()
-		totalRounds := int(getTotalRounds(dbmap, year))
-		for currentRound := 1; currentRound <= totalRounds; currentRound++ {
-			for _, opponent := range opponents {
-				// now we gotta get all the scores etc so far in a big blob
-				// and let the frontend display it nice for the saltyboy feature.
-				// is this getting too detailed?  should this be lots of little endpoints?
-				// sleep on it...
-				println(opponent.ID)
-			}
-		}
-
-		return c.JSON(http.StatusOK, opponents)
+		coach := c.QueryParam("coach")
+		round, _ := strconv.Atoi(c.QueryParam("round"))
+		year, _ := strconv.Atoi(c.QueryParam("year"))
+		payload := getSaltyboyRound(dbmap, coach, round, year)
+		// spew.Dump(payload)
+		return c.JSON(http.StatusOK, payload)
 	})
 
 	defer dbmap.Db.Close()
