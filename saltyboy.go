@@ -107,7 +107,7 @@ func getSaltyOpponents(db *gorp.DbMap, coach string, round int, year int) []Salt
 
 func getSaltyCoach(db *gorp.DbMap, coach string, round int, year int) SaltyCoach {
 	wins, losses, draws := getWLDTally(db, coach, round, year)
-	opponent := getRoundOpponent(db, coach, round, year)
+	opponent := getRoundOpponentID(db, coach, round, year)
 	return SaltyCoach{
 		Coach:          coach,
 		ActualOutcome:  getMatchOutcome(db, coach, opponent, round, year),

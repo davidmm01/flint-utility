@@ -13,6 +13,10 @@ import (
 // TODO: need to learn about packages and break main up a bit, a lot of files already
 
 func main() {
+	// TODO: figure out whether its better to initDb here and pass it everywhere (i dont like this)
+	// OR if its better to just initDb inside functions as needed?
+	// Doing the later would mean i dont need an extra param for almost every function...
+
 	dbmap := initDb()
 	e := echo.New()
 

@@ -20,7 +20,16 @@ func getOpponents(db *gorp.DbMap, target string) []coach {
 	return coaches
 }
 
-func getRoundOpponent(db *gorp.DbMap, target string, round int, year int) string {
+func getOpponentsIDs(db *gorp.DbMap, target string) []string {
+	opponentCoaches := getOpponents(db, target)
+	var opponents []string
+	for _, opponent := range opponentCoaches {
+		opponents = append(opponents, opponent.ID)
+	}
+	return opponents
+}
+
+func getRoundOpponentID(db *gorp.DbMap, target string, round int, year int) string {
 	var roundMatchupRow roundMatchup
 	// TODO: find if can do the below without the format string
 

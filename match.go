@@ -4,14 +4,23 @@ import (
 	"github.com/go-gorp/gorp"
 )
 
+// WIN constant representing a won match
+const WIN = "WIN"
+
+// LOSS constant representing a lost match
+const LOSS = "LOSS"
+
+// DRAW constant representing a drawn match
+const DRAW = "DRAW"
+
 func getWLDTally(db *gorp.DbMap, coach string, round int, year int) (int, int, int) {
 	wins, losses, draws := 0, 0, 0
 	opponents := getOpponents(db, coach)
 	for _, opponent := range opponents {
 		outcome := getMatchOutcome(db, coach, opponent.ID, round, year)
-		if outcome == "WIN" {
+		if outcome == WIN {
 			wins++
-		} else if outcome == "LOSS" {
+		} else if outcome == LOSS {
 			losses++
 		} else {
 			draws++
@@ -24,17 +33,24 @@ func getMatchOutcome(db *gorp.DbMap, coach string, opponent string, round int, y
 	coachScores := getSaltyScores(db, coach, round, year)
 	opponentScores := getSaltyScores(db, opponent, round, year)
 	scoreSettings := getScoreSettings(db, year)
-	return calculateOutcome(coachScores, opponentScores, scoreSettings)
+	coachTally, opponentTally := calculateScoreTallies(coachScores, opponentScores, scoreSettings)
+	return getWinLossDrawStatus(coachTally, opponentTally)
 }
 
-func calculateOutcome(coachScores SaltyScores, opponentScores SaltyScores, scoreSettings scoreSettings) string {
+func calculateScoreTallies(coachScores SaltyScores, opponentScores SaltyScores, scoreSettings scoreSettings) (int, int) {
 	coachScoreTally := 0
 	opponentScoreTally := 0
 
-	if coachScores.Kicks > opponentScores.Kicks {
+	if coachScores.Score > opponentScores.Score {
 		coachScoreTally += scoreSettings.Score
-	} else if coachScores.Kicks < opponentScores.Kicks {
+	} else if coachScores.Score < opponentScores.Score {
 		opponentScoreTally += scoreSettings.Score
+	}
+
+	if coachScores.Kicks > opponentScores.Kicks {
+		coachScoreTally += scoreSettings.Kicks
+	} else if coachScores.Kicks < opponentScores.Kicks {
+		opponentScoreTally += scoreSettings.Kicks
 	}
 
 	if coachScores.Handballs > opponentScores.Handballs {
@@ -91,13 +107,15 @@ func calculateOutcome(coachScores SaltyScores, opponentScores SaltyScores, score
 		opponentScoreTally += scoreSettings.Spoils
 	}
 
-	// TODO: these return values should be refactored to a table or at least some global constant
-	if coachScoreTally > opponentScoreTally {
-		return "WIN"
-	} else if coachScoreTally < opponentScoreTally {
-		return "LOSS"
-	} else {
-		return "DRAW"
-	}
+	return coachScoreTally, opponentScoreTally
+}
 
+func getWinLossDrawStatus(coachScoreTally int, opponentScoreTally int) string {
+	if coachScoreTally > opponentScoreTally {
+		return WIN
+	} else if coachScoreTally < opponentScoreTally {
+		return LOSS
+	} else {
+		return DRAW
+	}
 }
