@@ -5,6 +5,7 @@ CREATE TABLE coach (
     c_ult_first_name VARCHAR(200), --first name on ult footy as displayed
     c_past_team_names BLOB --comma separated blob of previous team names
 );
+
 -->>HAS BEEN RUN IN DB
 CREATE TABLE coach (c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, c_team_name VARCHAR(200), c_ult_first_name VARCHAR(200), c_past_team_names BLOB);
 --<<HAS BEEN RUN IN DB

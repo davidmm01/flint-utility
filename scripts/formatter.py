@@ -1,4 +1,8 @@
 import re
+from sqlalchemy import create_engine
+import sys
+
+# also requires PyMySQL to be installed
 
 """
 Script for generating SQL to populate round_score and  round_matchup tables
@@ -14,16 +18,7 @@ Add the correctly formatted file to the formatter_feeder_files array below
 """
 
 formatter_feeder_files = [
-    # "formatter_feeder_rd_1.txt",
-    # "formatter_feeder_rd_2.txt",
-    # "formatter_feeder_rd_3.txt",
-    # "formatter_feeder_rd_4.txt",
-    # "formatter_feeder_rd_5.txt",
-    # "formatter_feeder_rd_6.txt",
-    # "formatter_feeder_rd_7.txt",
-    # "formatter_feeder_rd_8.txt",
-    # "formatter_feeder_rd_9.txt",
-    # "formatter_feeder_rd_10.txt",
+    # "formatter_feeder_rd_19.txt",
 ]
 
 # mapping for going from team name to a coach id as per coach database
@@ -50,7 +45,25 @@ coach_map = {
     'Swimming... And Tits': "'milbs'",
     'BunkoutWithBurnout!': "'frank'",
     'Disown Team': "'milbs'",
+    'Andrew cant cook': "'frank'",
+    "Tanky Longy's Team": "'staff'"
 }
+
+script_args = {
+    "commit": False,
+}
+
+for argument in sys.argv:
+    if argument in list(script_args.keys()):
+        script_args[argument] = True
+
+if(script_args["commit"]):
+    print("'commit' arg recieved, outputted SQL will be run in database")
+else:
+    print("'commit' arg not recieved, will not update database")
+
+
+round_score_queries = []
 
 print(f'--inserts for round_score table')
 for file in formatter_feeder_files:
@@ -88,11 +101,14 @@ for file in formatter_feeder_files:
 
         sql = sql_start + sql_middle + sql_end
         print(sql)
-        
+        round_score_queries.append(sql)
+
         line = f.readline()
 
     print()
     f.close()
+
+round_matchup_queries = []
 
 print(f'\n--inserts for round_matchups table')
 for file in formatter_feeder_files:
@@ -109,5 +125,18 @@ for file in formatter_feeder_files:
         sql = "INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES ("
         sql += f"{round}, {year}, {coach_1}, {coach_2});"
         print(sql)
+        round_matchup_queries.append(sql)
     f.close()
     print()
+
+engine = create_engine("mysql+pymysql://devbox:123@/FLINT")  # PyMySQL driver required
+
+with engine.connect() as con:
+
+    for query in round_score_queries:
+        if script_args["commit"]:
+            con.execute(query)
+
+    for query in round_matchup_queries:
+        if script_args["commit"]:
+            con.execute(query)
