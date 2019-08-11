@@ -19,7 +19,7 @@ type LadderPlace struct {
 
 func createLadderPlaceArray(db *gorp.DbMap, year int) []LadderPlace {
 	var ladder []LadderPlace
-	coaches := getAllCoaches(db)
+	coaches := getAllCoaches(db, year)
 
 	for _, element := range coaches {
 		ladder = append(ladder, LadderPlace{

@@ -16,8 +16,7 @@ func TestCoach(t *testing.T) {
 	assert.Equal(t, "davo", rowOfCoachTable.ID, "get c_coach_id failed")
 	assert.Equal(t, "flamingos", rowOfCoachTable.TeamName, "get c_team_name failed")
 	assert.Equal(t, "The Swarm", rowOfCoachTable.FirstName, "get c_ult_first_name failed")
-	assert.Equal(t, "", rowOfCoachTable.PastTeamNames.String, "get c_coach_id failed")
-	assert.Equal(t, false, rowOfCoachTable.PastTeamNames.Valid, "get c_coach_id failed")
+	assert.Equal(t, 2019, rowOfCoachTable.Year, "get c_year failed")
 	defer dbmap.Db.Close()
 }
 

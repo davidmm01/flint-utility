@@ -1,14 +1,10 @@
---creation 
+--original creation 
 CREATE TABLE coach (
     c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, --my identifier for the coach
     c_team_name VARCHAR(200), --current team name
     c_ult_first_name VARCHAR(200), --first name on ult footy as displayed
     c_past_team_names BLOB --comma separated blob of previous team names
 );
-
--- TODO: this coach table is bad, it needs to have a c_year on it too, allowing for different coaches across year (unlikely to be an issue for a few years atleast) 
---       regardless, fixing this is still high priority as refactor after alot of work is done will be annoying
---       also might remove the c_past_team_names, i don't care about it, should really be a separate table for coach aliases or something
 
 -->>HAS BEEN RUN IN DB
 CREATE TABLE coach (c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, c_team_name VARCHAR(200), c_ult_first_name VARCHAR(200), c_past_team_names BLOB);
@@ -35,4 +31,25 @@ INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_past_team_names)
 INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_past_team_names) VALUES ('schlong', 'Green Heinekens', 'Jack', null);
 INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_past_team_names) VALUES ('staff', 'Costa''s Shroom Caps ', 'staffa', null);
 INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_past_team_names) VALUES ('shust', 'The Faceless Men', 'shuster', null);
+--<<HAS BEEN RUN IN DB
+
+
+--maintenance
+-->>HAS BEEN RUN IN DB
+ALTER TABLE coach DROP c_past_team_names;
+ALTER TABLE coach ADD COLUMN c_year INT;
+--<<HAS BEEN RUN IN DB
+
+
+-- updated creation
+CREATE TABLE coach (
+    c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, --my identifier for the coach
+    c_team_name VARCHAR(200), --current team name
+    c_ult_first_name VARCHAR(200), --first name on ult footy as displayed
+    c_year INT --year the coach was playing
+);
+CREATE TABLE coach (c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, c_team_name VARCHAR(200), c_ult_first_name VARCHAR(200), c_year INT);
+
+-->>HAS BEEN RUN IN DB
+UPDATE coach SET c_year = 2019;
 --<<HAS BEEN RUN IN DB

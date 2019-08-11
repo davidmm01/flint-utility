@@ -39,7 +39,8 @@ func main() {
 	// coach endpoints
 	e.GET("/coaches", func(c echo.Context) error {
 		// TODO: unit test for this endpoint
-		coaches := getAllCoaches(dbmap)
+		year, _ := strconv.Atoi(c.QueryParam("year"))
+		coaches := getAllCoaches(dbmap, year)
 		return c.JSON(http.StatusOK, coaches)
 	})
 

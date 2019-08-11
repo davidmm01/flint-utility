@@ -6,9 +6,10 @@ import (
 	"github.com/go-gorp/gorp"
 )
 
-func getAllCoaches(db *gorp.DbMap) []coach {
+func getAllCoaches(db *gorp.DbMap, year int) []coach {
 	var coaches []coach
-	db.Select(&coaches, "SELECT * FROM coach;")
+	query := fmt.Sprintf("SELECT * FROM coach WHERE c_year=%d;", year)
+	db.Select(&coaches, query)
 	return coaches
 }
 

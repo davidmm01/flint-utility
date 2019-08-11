@@ -1,16 +1,15 @@
 package main
 
 import (
-	"database/sql"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func coachSetup() (coach, coach, coach) {
-	coach1 := coach{ID: "davo", TeamName: "flamingos", FirstName: "David", PastTeamNames: sql.NullString{String: "", Valid: false}}
-	coach2 := coach{ID: "jim", TeamName: "Stand By Crouch", FirstName: "jermes", PastTeamNames: sql.NullString{String: "", Valid: false}}
-	coach3 := coach{ID: "bark", TeamName: "PASSWORD IS BAYSIDE", FirstName: "Marcus", PastTeamNames: sql.NullString{String: "", Valid: false}}
+	coach1 := coach{ID: "davo", TeamName: "flamingos", FirstName: "David", Year: 2019}
+	coach2 := coach{ID: "jim", TeamName: "Stand By Crouch", FirstName: "jermes", Year: 2019}
+	coach3 := coach{ID: "bark", TeamName: "PASSWORD IS BAYSIDE", FirstName: "Marcus", Year: 2019}
 	return coach1, coach2, coach3
 }
 

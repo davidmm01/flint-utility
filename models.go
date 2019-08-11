@@ -1,18 +1,15 @@
 package main
 
-import "database/sql"
-
 type testTable struct {
 	ID    int
 	Value string
 }
 
 type coach struct {
-	ID            string         `db:"c_coach_id, primarykey"`
-	TeamName      string         `db:"c_team_name"`
-	FirstName     string         `db:"c_ult_first_name"`
-	PastTeamNames sql.NullString `db:"c_past_team_names"`
-	// only use sql.NullString when values likely to be null, doesn't play well with print/ln
+	ID        string `db:"c_coach_id, primarykey"`
+	TeamName  string `db:"c_team_name"`
+	FirstName string `db:"c_ult_first_name"`
+	Year      int    `db:"c_year"`
 }
 
 type roundMatchup struct {
