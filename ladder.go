@@ -1,9 +1,5 @@
 package main
 
-import (
-	"github.com/go-gorp/gorp"
-)
-
 // LadderPlace represents the position of a coach on the ladder
 type LadderPlace struct {
 	Coach         string
@@ -17,9 +13,9 @@ type LadderPlace struct {
 	Position      int
 }
 
-func createLadderPlaceArray(db *gorp.DbMap, year int) []LadderPlace {
+func createLadderPlaceArray(year int) []LadderPlace {
 	var ladder []LadderPlace
-	coaches := getAllCoaches(db, year)
+	coaches := getAllCoaches(year)
 
 	for _, element := range coaches {
 		ladder = append(ladder, LadderPlace{
@@ -48,15 +44,15 @@ func createCoachMap(ladder []LadderPlace) map[string]int {
 	return coachMap
 }
 
-func getLadder(db *gorp.DbMap, round int, year int) []LadderPlace {
+func getLadder(round int, year int) []LadderPlace {
 
-	ladder := createLadderPlaceArray(db, year)
+	ladder := createLadderPlaceArray(year)
 	coachIndexMap := createCoachMap(ladder)
 
 	// Determine the Wins, Losses, Draws, PointsFor, PointsAgainst and Points for each match
-	matchups := getRoundMatchups(db, round, year)
+	matchups := getRoundMatchups(round, year)
 	for _, matchup := range matchups {
-		outcome, coachScore, opponentScore := getMatchOutcome(db, matchup.Coach1, matchup.Coach2, matchup.Round, matchup.Year)
+		outcome, coachScore, opponentScore := getMatchOutcome(matchup.Coach1, matchup.Coach2, matchup.Round, matchup.Year)
 		if outcome == WIN {
 			ladder[coachIndexMap[matchup.Coach1]].Wins++
 			ladder[coachIndexMap[matchup.Coach2]].Losses++

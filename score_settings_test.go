@@ -21,6 +21,5 @@ func TestGetScoreSettings(t *testing.T) {
 		Clearances:          1,
 		Spoils:              3,
 	}
-	dbmap := initDb()
-	assert.Equal(t, getScoreSettings(dbmap, 2019), expected, "getScoreSettings failed")
+	assert.Equal(t, getScoreSettings(2019), expected, "getScoreSettings failed")
 }

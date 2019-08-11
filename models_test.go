@@ -30,6 +30,7 @@ func TestRoundMatchup(t *testing.T) {
 	assert.Equal(t, 1, rowOfRounchMatchupTable.Round, "get rm_round failed")
 	assert.Equal(t, "jim", rowOfRounchMatchupTable.Coach1, "get rm_c_coach_id_1 failed")
 	assert.Equal(t, "gab", rowOfRounchMatchupTable.Coach2, "get rm_c_coach_id_2 failed")
+	defer dbmap.Db.Close()
 }
 
 func TestRoundScore(t *testing.T) {
@@ -52,6 +53,7 @@ func TestRoundScore(t *testing.T) {
 	assert.Equal(t, 36, rowOfRoundScoreTable.Rebounds, "get rs_rebound_50s failed")
 	assert.Equal(t, 26, rowOfRoundScoreTable.Clearances, "get rs_clearances failed")
 	assert.Equal(t, 43, rowOfRoundScoreTable.Spoils, "get rs_spoils failed")
+	defer dbmap.Db.Close()
 }
 
 func TestScoreSettings(t *testing.T) {
@@ -71,6 +73,7 @@ func TestScoreSettings(t *testing.T) {
 	assert.Equal(t, 1, rowOfScoreSettings.Rebounds, "get ss_rebound_50s failed")
 	assert.Equal(t, 1, rowOfScoreSettings.Clearances, "get ss_clearances failed")
 	assert.Equal(t, 3, rowOfScoreSettings.Spoils, "get ss_spoils failed")
+	defer dbmap.Db.Close()
 }
 
 func TestByeRound(t *testing.T) {
@@ -80,4 +83,5 @@ func TestByeRound(t *testing.T) {
 	assert.NoError(t, err, "select from table bye_round failed")
 	assert.Equal(t, 2019, rowOfByeRound.Year, "get br_year failed")
 	assert.Equal(t, 13, rowOfByeRound.Round, "get br_round failed")
+	defer dbmap.Db.Close()
 }

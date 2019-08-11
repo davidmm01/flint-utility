@@ -8,6 +8,5 @@ import (
 
 func TestGetTotalRounds(t *testing.T) {
 	// TODO: create some proper test data so that this test isn't so fragile... or wait till end of the year lol
-	dbmap := initDb()
-	assert.Equal(t, 18, getTotalRounds(dbmap, 2019))
+	assert.Equal(t, 18, getTotalRounds(2019))
 }

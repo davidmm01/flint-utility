@@ -2,13 +2,15 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/go-gorp/gorp"
 )
 
-func getScoreSettings(db *gorp.DbMap, year int) scoreSettings {
+func getScoreSettings(year int) scoreSettings {
 	var settings scoreSettings
+
+	db := initDb()
 	query := fmt.Sprintf("SELECT * FROM score_settings WHERE ss_year=%d;", year)
 	db.SelectOne(&settings, query)
+	defer db.Db.Close()
+
 	return settings
 }

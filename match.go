@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/go-gorp/gorp"
 )
 
 // WIN constant representing a won match
@@ -17,11 +15,11 @@ const DRAW = "DRAW"
 
 // TODO: refactor the idea of a match with these outcomes etc into a class
 
-func getWLDTally(db *gorp.DbMap, coach string, round int, year int) (int, int, int) {
+func getWLDTally(coach string, round int, year int) (int, int, int) {
 	wins, losses, draws := 0, 0, 0
-	opponents := getOpponents(db, coach)
+	opponents := getOpponents(coach, year)
 	for _, opponent := range opponents {
-		outcome, _, _ := getMatchOutcome(db, coach, opponent.ID, round, year)
+		outcome, _, _ := getMatchOutcome(coach, opponent.ID, round, year)
 		if outcome == WIN {
 			wins++
 		} else if outcome == LOSS {
@@ -33,18 +31,20 @@ func getWLDTally(db *gorp.DbMap, coach string, round int, year int) (int, int, i
 	return wins, losses, draws
 }
 
-func getRoundMatchups(db *gorp.DbMap, round int, year int) []roundMatchup {
+func getRoundMatchups(round int, year int) []roundMatchup {
 	// TODO: MISSING UNIT TEST
 	var matchups []roundMatchup
+	db := initDb()
 	query := fmt.Sprintf("SELECT * FROM round_matchup where rm_year=%d and rm_round<=%d;", year, round)
 	db.Select(&matchups, query)
+	defer db.Db.Close()
 	return matchups
 }
 
-func getMatchOutcome(db *gorp.DbMap, coach string, opponent string, round int, year int) (string, int, int) {
-	coachScores := getSaltyScores(db, coach, round, year)
-	opponentScores := getSaltyScores(db, opponent, round, year)
-	scoreSettings := getScoreSettings(db, year)
+func getMatchOutcome(coach string, opponent string, round int, year int) (string, int, int) {
+	coachScores := getSaltyScores(coach, round, year)
+	opponentScores := getSaltyScores(opponent, round, year)
+	scoreSettings := getScoreSettings(year)
 	coachTally, opponentTally := calculateScoreTallies(coachScores, opponentScores, scoreSettings)
 	return getWinLossDrawStatus(coachTally, opponentTally), coachTally, opponentTally
 }

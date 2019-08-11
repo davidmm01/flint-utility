@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/go-gorp/gorp"
 )
 
 // SaltyMeta contains metadata of the round, returned by saltyboy round endpoint
@@ -52,13 +50,13 @@ type SaltyboyPayload struct {
 	SaltyOpponents []SaltyOpponent
 }
 
-func getSaltyboyRound(db *gorp.DbMap, coach string, round int, year int) SaltyboyPayload {
+func getSaltyboyRound(coach string, round int, year int) SaltyboyPayload {
 	saltyMeta := SaltyMeta{
 		Year:  year,
 		Round: round,
 	}
-	saltyCoach := getSaltyCoach(db, coach, round, year)
-	saltyOpponents := getSaltyOpponents(db, coach, round, year)
+	saltyCoach := getSaltyCoach(coach, round, year)
+	saltyOpponents := getSaltyOpponents(coach, round, year)
 
 	return SaltyboyPayload{
 		SaltyMeta:      saltyMeta,
@@ -67,10 +65,14 @@ func getSaltyboyRound(db *gorp.DbMap, coach string, round int, year int) Saltybo
 	}
 }
 
-func getSaltyScores(db *gorp.DbMap, coach string, round int, year int) SaltyScores {
+func getSaltyScores(coach string, round int, year int) SaltyScores {
 	var roundScoreRow roundScore
+
+	db := initDb()
 	query := fmt.Sprintf("SELECT * FROM round_score WHERE rs_c_coach_id='%s' AND rs_round=%d AND rs_year=%d;", coach, round, year)
 	db.SelectOne(&roundScoreRow, query)
+	defer db.Db.Close()
+
 	scores := SaltyScores{
 		Score:               roundScoreRow.Score,
 		Kicks:               roundScoreRow.Kicks,
@@ -87,13 +89,13 @@ func getSaltyScores(db *gorp.DbMap, coach string, round int, year int) SaltyScor
 	return scores
 }
 
-func getSaltyOpponents(db *gorp.DbMap, coach string, round int, year int) []SaltyOpponent {
+func getSaltyOpponents(coach string, round int, year int) []SaltyOpponent {
 	var saltyOpponents []SaltyOpponent
 
-	opponents := getOpponents(db, coach)
+	opponents := getOpponents(coach, year)
 	for _, opponent := range opponents {
-		opponentScores := getSaltyScores(db, opponent.ID, round, year)
-		outcome, _, _ := getMatchOutcome(db, coach, opponent.ID, round, year)
+		opponentScores := getSaltyScores(opponent.ID, round, year)
+		outcome, _, _ := getMatchOutcome(coach, opponent.ID, round, year)
 		saltyOpponent := SaltyOpponent{
 			Opponent:    opponent.ID,
 			Outcome:     outcome,
@@ -105,10 +107,10 @@ func getSaltyOpponents(db *gorp.DbMap, coach string, round int, year int) []Salt
 	return saltyOpponents
 }
 
-func getSaltyCoach(db *gorp.DbMap, coach string, round int, year int) SaltyCoach {
-	wins, losses, draws := getWLDTally(db, coach, round, year)
-	opponent := getRoundOpponentID(db, coach, round, year)
-	outcome, _, _ := getMatchOutcome(db, coach, opponent, round, year)
+func getSaltyCoach(coach string, round int, year int) SaltyCoach {
+	wins, losses, draws := getWLDTally(coach, round, year)
+	opponent := getRoundOpponentID(coach, round, year)
+	outcome, _, _ := getMatchOutcome(coach, opponent, round, year)
 	return SaltyCoach{
 		Coach:          coach,
 		ActualOutcome:  outcome,
@@ -116,6 +118,6 @@ func getSaltyCoach(db *gorp.DbMap, coach string, round int, year int) SaltyCoach
 		PossibleWins:   wins,
 		PossibleLosses: losses,
 		PossibleDraws:  draws,
-		SaltyScores:    getSaltyScores(db, coach, round, year),
+		SaltyScores:    getSaltyScores(coach, round, year),
 	}
 }
