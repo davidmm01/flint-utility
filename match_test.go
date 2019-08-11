@@ -21,12 +21,12 @@ func TestGetMatchOutcome(t *testing.T) {
 	// r1 2019, kev beats dave, milbs looses to shust
 	// r8 2019, schlong v gab draw
 	dbmap := initDb()
-	winOutcome := getMatchOutcome(dbmap, "kev", "davo", 1, 2019)
-	lossOutcome := getMatchOutcome(dbmap, "milbs", "shust", 1, 2019)
-	drawOutcome := getMatchOutcome(dbmap, "staff", "gab", 8, 2019)
-	assert.Equal(t, winOutcome, "WIN", "getMatchOutcome didn't return the expected WIN")
-	assert.Equal(t, lossOutcome, "LOSS", "getMatchOutcome didn't return the expected LOSS")
-	assert.Equal(t, drawOutcome, "DRAW", "getMatchOutcome didn't return the expected DRAW")
+	winOutcome, _, _ := getMatchOutcome(dbmap, "kev", "davo", 1, 2019)
+	lossOutcome, _, _ := getMatchOutcome(dbmap, "milbs", "shust", 1, 2019)
+	drawOutcome, _, _ := getMatchOutcome(dbmap, "staff", "gab", 8, 2019)
+	assert.Equal(t, "WIN", winOutcome, "getMatchOutcome didn't return the expected WIN")
+	assert.Equal(t, "LOSS", lossOutcome, "getMatchOutcome didn't return the expected LOSS")
+	assert.Equal(t, "DRAW", drawOutcome, "getMatchOutcome didn't return the expected DRAW")
 }
 
 func TestCalculateScoreTallies(t *testing.T) {

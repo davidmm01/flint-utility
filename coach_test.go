@@ -18,19 +18,19 @@ func TestGetAllCoaches(t *testing.T) {
 	dbmap := initDb()
 	_, _, coach := coachSetup()
 	allCoaches := getAllCoaches(dbmap)
-	assert.Equal(t, len(allCoaches), 18, "getAllCoaches didn't return 18 coaches")
+	assert.Equal(t, 18, len(allCoaches), "getAllCoaches didn't return 18 coaches")
 	// TODO: find a way of doing Contains instead of Equal with array access, since its not robust
 	// using assert.Contains() doesn't seem to work for structs, only basic types???
-	assert.Equal(t, allCoaches[0], coach, "getAllCoaches didn't return coach "+coach.ID)
+	assert.Equal(t, coach, allCoaches[0], "getAllCoaches didn't return coach "+coach.ID)
 }
 
 func TestGetOpponents(t *testing.T) {
 	dbmap := initDb()
 	coach, opponent1, opponent2 := coachSetup()
 	opponents := getOpponents(dbmap, coach.ID)
-	assert.Equal(t, len(opponents), 17, "getOpponents didn't return 17 coaches")
-	assert.Equal(t, opponents[0], opponent2, "getAllCoaches didn't return coach "+opponent2.ID)
-	assert.Equal(t, opponents[7], opponent1, "getAllCoaches didn't return coach "+opponent1.ID)
+	assert.Equal(t, 17, len(opponents), "getOpponents didn't return 17 coaches")
+	assert.Equal(t, opponent2, opponents[0], "getAllCoaches didn't return coach "+opponent2.ID)
+	assert.Equal(t, opponent1, opponents[7], "getAllCoaches didn't return coach "+opponent1.ID)
 }
 
 func TestGetOpponentsIDs(t *testing.T) {

@@ -55,3 +55,9 @@ type scoreSettings struct {
 	Clearances          int `db:"ss_clearances"`
 	Spoils              int `db:"ss_spoils"`
 }
+
+type byeRound struct {
+	ID    int `db:"br_id, primarykey, autoincrement"`
+	Round int `db:"br_round"`
+	Year  int `db:"br_year"`
+}

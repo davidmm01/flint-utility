@@ -6,6 +6,10 @@ CREATE TABLE coach (
     c_past_team_names BLOB --comma separated blob of previous team names
 );
 
+-- TODO: this coach table is bad, it needs to have a c_year on it too, allowing for different coaches across year (unlikely to be an issue for a few years atleast) 
+--       regardless, fixing this is still high priority as refactor after alot of work is done will be annoying
+--       also might remove the c_past_team_names, i don't care about it, should really be a separate table for coach aliases or something
+
 -->>HAS BEEN RUN IN DB
 CREATE TABLE coach (c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, c_team_name VARCHAR(200), c_ult_first_name VARCHAR(200), c_past_team_names BLOB);
 --<<HAS BEEN RUN IN DB

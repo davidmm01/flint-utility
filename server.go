@@ -54,6 +54,23 @@ func main() {
 		return c.JSON(http.StatusOK, payload)
 	})
 
+	// ladder endpoint
+	e.GET("/ladder", func(c echo.Context) error {
+		// TODO: unit test for this endpoint
+		round, _ := strconv.Atoi(c.QueryParam("round"))
+		year, _ := strconv.Atoi(c.QueryParam("year"))
+		payload := getLadder(dbmap, round, year)
+		return c.JSON(http.StatusOK, payload)
+	})
+
+	// TODO: records endpoint with:
+	// highest for stats
+	// lowest for stats
+	// averages
+
+	//LUCKY BOY!
+	// when u have a saltyboy that could only beat 1 opponent that round, and that happened to be their opponent!
+
 	defer dbmap.Db.Close()
 	e.Logger.Fatal(e.Start(":1323"))
 }
