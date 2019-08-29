@@ -18,7 +18,7 @@ Add the correctly formatted file to the formatter_feeder_files array below
 """
 
 formatter_feeder_files = [
-    # "formatter_feeder_rd_19.txt",
+    None
 ]
 
 # mapping for going from team name to a coach id as per coach database
@@ -46,7 +46,8 @@ coach_map = {
     'BunkoutWithBurnout!': "'frank'",
     'Disown Team': "'milbs'",
     'Andrew cant cook': "'frank'",
-    "Tanky Longy's Team": "'staff'"
+    "Tanky Longy's Team": "'staff'",
+    'Two time': "'frank'",
 }
 
 script_args = {
@@ -112,6 +113,7 @@ round_matchup_queries = []
 
 print(f'\n--inserts for round_matchups table')
 for file in formatter_feeder_files:
+    matches = int((len(open(file).readlines()) - 2) / 2)
     f = open(file, "r")
 
     round = f.readline().strip()
@@ -119,7 +121,7 @@ for file in formatter_feeder_files:
     
     print(f'--round {round} {year}')
 
-    for i in range(9):
+    for i in range(matches):
         coach_1 = coach_map[f.readline().split('\t')[0].strip()]
         coach_2 = coach_map[f.readline().split('\t')[0].strip()]
         sql = "INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES ("
