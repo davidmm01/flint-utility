@@ -15,23 +15,23 @@ This is a hacktastic project, made with go and react by someone who has never us
 
 ### Start the backend:
 
-   go run server.go db.go models.go coach.go round.go saltyboy.go match.go season.go score_settings.go ladder.go
+   `go run server.go db.go models.go coach.go round.go saltyboy.go match.go season.go score_settings.go ladder.go records.go`
 
 runs on port 1323
 
 
 ### Start the frontend:
 
-   cd frontend
+   `cd frontend`
    
-   npm start
+   `npm start`
 
 runs on port 3000
 
 
 ### Run the backend tests
 
-   go test -v
+   `go test -v`
 
 
 ### Stack info
@@ -61,10 +61,10 @@ Directory sql contains history of the data pushed in
 
 start:
 
-   sudo mysql 
+   `sudo mysql`
 
 connect to the FLINT database:
 
-   connect FLINT
+   `connect FLINT`
 
 Then go nuts with sql

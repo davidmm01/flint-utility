@@ -57,14 +57,32 @@ func main() {
 		return c.JSON(http.StatusOK, payload)
 	})
 
+	// records endpoint
+	e.GET("/records", func(c echo.Context) error {
+		// TODO: unit test for this endpoint
+		year, _ := strconv.Atoi(c.QueryParam("year"))
+		round, _ := strconv.Atoi(c.QueryParam("round")) // optional param
+		kind := c.QueryParam("kind")
+
+		if year == 0 {
+			return c.JSON(http.StatusBadRequest, "numerical 'year' query paramater required")
+		}
+		if kind != "min" && kind != "max" {
+			return c.JSON(http.StatusBadRequest, "kind must be 'min' or 'max'")
+		}
+
+		payload := getRecords(round, year, kind)
+		return c.JSON(http.StatusOK, payload)
+	})
+
 	e.Logger.Fatal(e.Start(":1323"))
 
 	// TODO: need to learn about packages and break main up a bit, a lot of files already
+	// TODO: query params that are not optional should return helpful errors when not provided
+	//       come up with a consistent and pretty way of doing it, i don't think we should replicate
+	//       the way its been done for the 'records' endpoint for each other endpoint
 
-	// TODO: records endpoint with:
-	// 		highest for stats
-	// 		lowest for stats
-	// 		averages
+	// TODO: averages endpoint
 
 	//TODO: LUCKY BOY! endpoint
 	// 		when u have a saltyboy that could only beat 1 opponent that round, and that happened to be their opponent!
@@ -75,7 +93,7 @@ func main() {
 	//		-new column on round_matchup to indicate round type?  would be easy enough to add an extra line into format feeder for normal rounds
 	//       and null the others and manually update them for the few exceptions.  This could then also replace the bye_round table
 
-	// TODO: MIGRATE TO POSTGRES OVER MYSQL
+	// TODO: MIGRATE TO POSTGRES OVER MYSQL???
 	// TODO: containerise this complete with a script to set up the entire DB (after the postgres migration)
 
 }
