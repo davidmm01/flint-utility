@@ -75,6 +75,14 @@ func main() {
 		return c.JSON(http.StatusOK, payload)
 	})
 
+	e.GET("/averages", func(c echo.Context) error {
+		// TODO: unit test for this endpoint
+		// TODO: consider removing finals from this metric
+		year, _ := strconv.Atoi(c.QueryParam("year"))
+		payload := getAverages(year)
+		return c.JSON(http.StatusOK, payload)
+	})
+
 	e.Logger.Fatal(e.Start(":1323"))
 
 	// TODO: need to learn about packages and break main up a bit, a lot of files already
@@ -84,7 +92,7 @@ func main() {
 
 	// TODO: averages endpoint
 
-	//TODO: LUCKY BOY! endpoint
+	// TODO: LUCKY BOY! endpoint
 	// 		when u have a saltyboy that could only beat 1 opponent that round, and that happened to be their opponent!
 	// 		milby actually got a luckyboy in round 2!
 
@@ -93,7 +101,11 @@ func main() {
 	//		-new column on round_matchup to indicate round type?  would be easy enough to add an extra line into format feeder for normal rounds
 	//       and null the others and manually update them for the few exceptions.  This could then also replace the bye_round table
 
+	// TODO: decide which endpoints need to have their functionality limited to only in season rounds (ladder etc...)
+
+	// TODO: change from using float32 to float64 everywhere.  Why did I start with float32?
+
 	// TODO: MIGRATE TO POSTGRES OVER MYSQL???
-	// TODO: containerise this complete with a script to set up the entire DB (after the postgres migration)
+	// TODO: containerise this complete with a script to set up the entire DB (after the postgres migration?)
 
 }

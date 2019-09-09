@@ -15,7 +15,7 @@ This is a hacktastic project, made with go and react by someone who has never us
 
 ### Start the backend:
 
-   `go run server.go db.go models.go coach.go round.go saltyboy.go match.go season.go score_settings.go ladder.go records.go`
+   `go run server.go db.go models.go coach.go round.go saltyboy.go match.go season.go score_settings.go ladder.go records.go averages.go`
 
 runs on port 1323
 

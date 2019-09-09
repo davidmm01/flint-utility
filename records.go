@@ -37,6 +37,10 @@ type Records struct {
 	Spoils              []Record
 }
 
+// TODO: refactor this completely to not have the categories as explicit keys (similar to the averages endpoint)
+//       might need to settle with returning all record values as strings so that we can simply do this
+//       The string concession would also solve our ugly duplicated code situation in this file
+
 func getRecords(round int, year int, kind string) Records {
 	var records Records
 
