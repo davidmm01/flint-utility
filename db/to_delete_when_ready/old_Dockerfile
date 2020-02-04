@@ -1,0 +1,14 @@
+FROM ubuntu:18.04
+
+RUN apt update
+
+# set up database
+RUN apt install -y mysql-server
+
+COPY ./sql/build /tmp/build
+
+RUN /etc/init.d/mysql start && \
+    mysql -e "CREATE USER 'flintuser'@'localhost' IDENTIFIED BY '123'" && \
+    mysql < /tmp/build
+
+CMD ["mysqld"]

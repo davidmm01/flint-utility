@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+    db:
+        build: 
+            context: ./db/
+        ports: 
+         - '3306:3306'
+    backend:
+        build:
+            context: ./backend/
+        ports:
+            - '1323:1323'

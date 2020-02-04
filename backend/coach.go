@@ -9,6 +9,8 @@ func getAllCoaches(year int) []coach {
 	var coaches []coach
 	query := fmt.Sprintf("SELECT * FROM coach WHERE c_year=%d;", year)
 	db.Select(&coaches, query)
+	fmt.Println(coaches)
+	
 	defer db.Db.Close()
 	return coaches
 }

@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-
+	"fmt"
 	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -31,8 +31,10 @@ func main() {
 
 	// coach endpoints
 	e.GET("/coaches", func(c echo.Context) error {
+		fmt.Println("got a request for the coaches endpoint right here")
 		// TODO: unit test for this endpoint
 		year, _ := strconv.Atoi(c.QueryParam("year"))
+		fmt.Println("using this year:", year)
 		coaches := getAllCoaches(year)
 		return c.JSON(http.StatusOK, coaches)
 	})
@@ -105,7 +107,7 @@ func main() {
 
 	// TODO: change from using float32 to float64 everywhere.  Why did I start with float32?
 
-	// TODO: MIGRATE TO POSTGRES OVER MYSQL???
-	// TODO: containerise this complete with a script to set up the entire DB (after the postgres migration?)
+	// TODO: coach table has coach_year, would be good to normalise this and have another table for coach_years or something
+	//       no coach is changing this year though so I have a whole year to worry about this lol but keep it in mind
 
 }

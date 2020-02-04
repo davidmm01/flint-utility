@@ -1,0 +1,719 @@
+CREATE DATABASE IF NOT EXISTS FLINT;
+USE FLINT;
+
+CREATE TABLE bye_round (
+    br_id INT AUTO_INCREMENT PRIMARY KEY, 
+    br_round INT, 
+    br_year INT
+);
+
+INSERT INTO bye_round (br_round, br_year) VALUES (12, 2019);
+INSERT INTO bye_round (br_round, br_year) VALUES (13, 2019);
+INSERT INTO bye_round (br_round, br_year) VALUES (14, 2019);
+
+CREATE TABLE coach (
+    c_coach_id VARCHAR(20) NOT NULL PRIMARY KEY, 
+    c_team_name VARCHAR(200), 
+    c_ult_first_name VARCHAR(200), 
+    c_year INT
+);
+
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('steve', 'Ardern''s Army', 'Steve', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('milbs', 'TOOMUCHDOG', 'Andrew', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('jim', 'Stand By Crouch', 'jermes', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('cost', 'CostaWhyte', 'Andy', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('calv', 'The Spreadsheet', 'Lucas', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('karl', 'Bayside City Council', 'Karl', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('frank', 'The Bev Temples', 'Franco', 2019); 
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('fewy', 'The Dow Jones', 'James', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('doe', 'Mushroom Alfredo', 'James', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('bark', 'PASSWORD IS BAYSIDE', 'Marcus', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('kev', 'Derry Boys', 'Kevin', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('sam', 'Trunk', 'Sam', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('salc', '_thebiggerboi_', 'Chris', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('gab', 'Shrooms are great', 'Gabriel', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('davo', 'flamingos', 'The Swarm', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('schlong', 'Green Heinekens', 'Jack', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('staff', 'Costa''s Shroom Caps ', 'staffa', 2019);
+INSERT INTO coach (c_coach_id, c_team_name, c_ult_first_name, c_year) VALUES ('shust', 'The Faceless Men', 'shuster', 2019);
+
+CREATE TABLE score_settings (
+    ss_year INT NOT NULL PRIMARY KEY,
+    ss_score INT,
+    ss_kicks INT,
+    ss_handballs INT,
+    ss_marks INT,
+    ss_hitouts INT,
+    ss_tackles INT,
+    ss_disposal_efficiency INT,
+    ss_contested_posessions INT,
+    ss_rebound_50s INT,
+    ss_clearances INT,
+    ss_spoils INT
+);
+
+INSERT INTO score_settings (
+    ss_year, ss_score, ss_kicks, ss_handballs, ss_marks, ss_hitouts, ss_tackles, ss_disposal_efficiency, 
+    ss_contested_posessions, ss_rebound_50s, ss_clearances, ss_spoils
+    ) VALUES (2019, 8, 6, 6, 4, 3, 4, 3, 2, 1, 1, 3);
+
+CREATE TABLE round_score (
+    rs_id INT AUTO_INCREMENT PRIMARY KEY, 
+    rs_round INT, 
+    rs_year INT, 
+    rs_c_coach_id VARCHAR(20), 
+    FOREIGN KEY (rs_c_coach_id) REFERENCES coach(c_coach_id) ON DELETE SET NULL, 
+    rs_score INT, 
+    rs_kicks INT, 
+    rs_handballs INT, 
+    rs_marks INT, 
+    rs_hitouts INT, 
+    rs_tackles INT, 
+    rs_disposal_efficiency FLOAT(7,6), 
+    rs_contested_posessions INT, 
+    rs_rebound_50s INT, 
+    rs_clearances INT, 
+    rs_spoils INT
+);
+
+CREATE TABLE round_matchup (
+    rm_id INT AUTO_INCREMENT PRIMARY KEY,
+    rm_round INT,
+    rm_year INT,
+    rm_c_coach_id_1 VARCHAR(20),
+    FOREIGN KEY (rm_c_coach_id_1) REFERENCES coach(c_coach_id) ON DELETE SET NULL,
+    rm_c_coach_id_2 VARCHAR(20),
+    FOREIGN KEY (rm_c_coach_id_2) REFERENCES coach(c_coach_id) ON DELETE SET NULL
+);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'jim', 64, 139, 78, 55, 16, 37, 0.673, 79, 36, 26, 43);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'gab', 23, 128, 108, 48, 18, 44, 0.725, 80, 24, 21, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'staff', 40, 124, 71, 44, 35, 34, 0.718, 71, 21, 22, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'bark', 65, 171, 83, 47, 34, 45, 0.677, 97, 35, 32, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'schlong', 32, 138, 102, 48, 16, 31, 0.725, 103, 25, 35, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'steve', 54, 141, 121, 49, 34, 40, 0.725, 107, 22, 40, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'kev', 47, 133, 90, 49, 45, 29, 0.717, 80, 24, 17, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'davo', 45, 127, 101, 45, 16, 34, 0.750, 100, 34, 26, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'doe', 57, 162, 106, 52, 6, 41, 0.716, 112, 22, 43, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'calv', 23, 134, 125, 45, 20, 42, 0.703, 113, 28, 32, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'frank', 26, 135, 107, 39, 16, 39, 0.756, 110, 29, 27, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'sam', 25, 150, 116, 54, 32, 37, 0.703, 108, 37, 35, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'karl', 39, 120, 109, 40, 25, 45, 0.690, 91, 26, 26, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'cost', 51, 120, 94, 50, 36, 33, 0.706, 80, 30, 17, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'milbs', 31, 160, 79, 64, 21, 28, 0.686, 75, 45, 12, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'shust', 45, 126, 87, 41, 41, 34, 0.718, 94, 28, 31, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'salc', 35, 133, 102, 54, 23, 25, 0.745, 84, 20, 30, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (1, 2019, 'fewy', 99, 142, 66, 63, 0, 35, 0.692, 86, 21, 15, 15);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'jim', 66, 154, 75, 57, 38, 30, 0.633, 83, 26, 21, 31);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'davo', 61, 127, 101, 45, 14, 49, 0.724, 83, 25, 24, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'staff', 38, 156, 81, 54, 37, 27, 0.684, 102, 25, 37, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'steve', 41, 158, 120, 64, 34, 36, 0.705, 125, 34, 39, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'schlong', 37, 140, 105, 60, 44, 43, 0.657, 98, 20, 30, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'kev', 53, 127, 83, 40, 23, 35, 0.733, 83, 25, 19, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'doe', 30, 151, 112, 64, 11, 30, 0.707, 110, 21, 50, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'bark', 35, 137, 108, 49, 23, 40, 0.682, 108, 17, 44, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'frank', 51, 167, 138, 54, 34, 40, 0.725, 120, 25, 53, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'gab', 43, 151, 96, 62, 25, 33, 0.814, 74, 21, 20, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'karl', 44, 138, 105, 54, 15, 51, 0.733, 101, 28, 33, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'calv', 36, 140, 111, 57, 20, 44, 0.709, 109, 18, 42, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'milbs', 84, 170, 71, 67, 53, 31, 0.730, 84, 38, 25, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'sam', 64, 149, 89, 64, 40, 32, 0.735, 74, 30, 24, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'salc', 62, 137, 104, 45, 32, 46, 0.730, 101, 19, 25, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'cost', 50, 132, 80, 42, 33, 32, 0.726, 85, 32, 22, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'shust', 30, 137, 104, 55, 33, 31, 0.734, 89, 32, 33, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (2, 2019, 'fewy', 62, 99, 64, 42, 0, 30, 0.632, 61, 19, 20, 17);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'jim', 97, 131, 77, 41, 52, 41, 0.663, 85, 16, 26, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'schlong', 75, 130, 109, 44, 24, 38, 0.715, 105, 15, 34, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'staff', 72, 145, 70, 67, 38, 32, 0.684, 77, 19, 14, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'doe', 91, 154, 128, 48, 28, 39, 0.734, 111, 31, 37, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'kev', 51, 129, 99, 60, 40, 36, 0.750, 91, 20, 24, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'frank', 49, 173, 134, 60, 19, 26, 0.720, 123, 33, 47, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'karl', 24, 133, 95, 51, 17, 31, 0.693, 90, 15, 28, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'steve', 56, 163, 109, 64, 28, 37, 0.739, 98, 26, 38, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'milbs', 60, 118, 66, 60, 43, 20, 0.772, 60, 28, 18, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'davo', 36, 112, 132, 38, 17, 34, 0.758, 122, 24, 39, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'salc', 75, 150, 81, 62, 22, 45, 0.710, 90, 15, 30, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'bark', 27, 144, 111, 37, 22, 46, 0.722, 93, 17, 39, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'gab', 41, 137, 68, 57, 24, 22, 0.722, 75, 31, 24, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'fewy', 94, 150, 94, 57, 0, 33, 0.713, 93, 26, 19, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'calv', 69, 163, 105, 55, 7, 39, 0.728, 116, 39, 48, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'shust', 37, 133, 101, 54, 42, 30, 0.714, 88, 19, 37, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'sam', 37, 145, 95, 61, 11, 40, 0.746, 84, 24, 26, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (3, 2019, 'cost', 63, 139, 103, 45, 33, 44, 0.698, 92, 24, 29, 11);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'jim', 80, 138, 75, 64, 50, 32, 0.714, 75, 21, 14, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'frank', 30, 140, 120, 65, 22, 32, 0.692, 95, 27, 33, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'gab', 37, 130, 93, 64, 29, 43, 0.803, 71, 22, 28, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'cost', 47, 140, 89, 68, 41, 36, 0.721, 86, 20, 24, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'bark', 16, 148, 106, 45, 18, 47, 0.689, 102, 32, 42, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'shust', 45, 134, 81, 57, 60, 45, 0.712, 99, 17, 28, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'davo', 79, 152, 101, 60, 28, 32, 0.688, 113, 25, 31, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'fewy', 28, 152, 99, 84, 0, 33, 0.757, 81, 20, 17, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'salc', 26, 122, 102, 52, 40, 40, 0.750, 84, 23, 24, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'steve', 55, 152, 129, 67, 24, 32, 0.790, 107, 28, 37, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'kev', 37, 153, 88, 84, 11, 25, 0.722, 72, 32, 17, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'milbs', 48, 161, 67, 61, 57, 16, 0.719, 74, 34, 18, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'staff', 45, 136, 74, 66, 37, 38, 0.724, 71, 22, 16, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'karl', 33, 149, 117, 68, 6, 42, 0.756, 104, 35, 33, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'sam', 40, 145, 78, 62, 20, 30, 0.812, 81, 26, 21, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'calv', 27, 139, 100, 54, 21, 41, 0.703, 92, 21, 27, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'schlong', 70, 154, 87, 64, 22, 26, 0.734, 94, 19, 27, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (4, 2019, 'doe', 42, 154, 116, 49, 23, 41, 0.696, 111, 17, 36, 15);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'jim', 46, 127, 92, 61, 47, 31, 0.689, 83, 15, 17, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'milbs', 36, 135, 91, 62, 32, 25, 0.770, 71, 25, 15, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'davo', 82, 144, 111, 55, 13, 36, 0.769, 98, 33, 36, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'cost', 60, 156, 96, 65, 43, 41, 0.702, 95, 32, 32, 7);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'sam', 70, 165, 97, 62, 26, 25, 0.756, 97, 26, 29, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'bark', 38, 138, 139, 64, 21, 40, 0.762, 86, 25, 29, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'gab', 32, 134, 101, 62, 14, 36, 0.770, 79, 24, 28, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'calv', 10, 117, 126, 44, 17, 35, 0.724, 86, 18, 34, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'kev', 66, 122, 116, 49, 24, 26, 0.773, 84, 21, 26, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'fewy', 63, 146, 75, 53, 0, 35, 0.751, 72, 28, 16, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'staff', 106, 164, 70, 68, 35, 31, 0.748, 93, 24, 21, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'salc', 60, 134, 105, 50, 37, 24, 0.749, 91, 20, 22, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'shust', 42, 129, 82, 59, 36, 27, 0.701, 68, 15, 20, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'steve', 46, 153, 119, 61, 25, 40, 0.779, 102, 24, 33, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'doe', 31, 134, 134, 49, 23, 29, 0.728, 109, 13, 43, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'karl', 34, 143, 117, 64, 25, 33, 0.750, 88, 22, 30, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'schlong', 41, 121, 88, 57, 25, 34, 0.694, 78, 16, 21, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (5, 2019, 'frank', 20, 144, 122, 70, 27, 23, 0.692, 85, 29, 29, 12);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'schlong', 58, 136, 87, 53, 21, 35, 0.650, 89, 17, 26, 33);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'karl', 43, 139, 100, 57, 30, 39, 0.665, 108, 22, 36, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'milbs', 68, 162, 85, 69, 50, 28, 0.721, 80, 31, 23, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'frank', 40, 150, 121, 61, 25, 38, 0.723, 100, 24, 23, 4);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'doe', 62, 132, 112, 51, 31, 40, 0.664, 114, 10, 30, 8);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'salc', 19, 143, 97, 55, 41, 40, 0.733, 83, 19, 36, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'jim', 40, 144, 81, 56, 43, 42, 0.627, 94, 31, 27, 30);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'fewy', 49, 152, 95, 69, 0, 44, 0.789, 95, 29, 22, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'staff', 60, 141, 101, 76, 55, 39, 0.736, 111, 23, 30, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'shust', 28, 123, 101, 48, 44, 33, 0.723, 86, 23, 26, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'kev', 25, 144, 103, 44, 28, 29, 0.745, 87, 32, 25, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'cost', 48, 137, 103, 46, 53, 35, 0.663, 104, 19, 30, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'sam', 65, 117, 110, 42, 40, 32, 0.709, 99, 25, 25, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'steve', 40, 144, 113, 59, 33, 49, 0.704, 86, 24, 29, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'davo', 54, 117, 106, 45, 0, 43, 0.695, 99, 26, 39, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'calv', 15, 161, 125, 63, 32, 48, 0.734, 104, 32, 40, 25);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'gab', 39, 151, 106, 58, 26, 42, 0.778, 91, 31, 36, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (6, 2019, 'bark', 64, 144, 97, 47, 27, 38, 0.651, 87, 17, 29, 19);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'schlong', 42, 132, 97, 51, 35, 35, 0.681, 92, 15, 30, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'milbs', 36, 135, 97, 66, 48, 25, 0.716, 75, 26, 20, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'karl', 34, 125, 95, 69, 27, 22, 0.691, 75, 23, 24, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'salc', 41, 154, 101, 54, 26, 44, 0.702, 96, 20, 34, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'frank', 37, 146, 98, 51, 14, 32, 0.701, 92, 30, 32, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'fewy', 66, 150, 111, 64, 0, 35, 0.759, 99, 17, 21, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'doe', 81, 139, 127, 60, 30, 39, 0.767, 111, 16, 36, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'shust', 53, 116, 92, 32, 39, 36, 0.663, 103, 18, 34, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'jim', 62, 135, 99, 44, 62, 36, 0.679, 101, 22, 24, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'cost', 39, 105, 70, 52, 65, 47, 0.691, 76, 12, 25, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'staff', 100, 133, 77, 65, 41, 32, 0.762, 69, 26, 19, 25);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'sam', 61, 137, 110, 52, 44, 37, 0.729, 103, 20, 31, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'kev', 45, 118, 102, 40, 25, 36, 0.741, 83, 28, 18, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'calv', 19, 114, 99, 33, 0, 34, 0.690, 82, 22, 29, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'gab', 49, 158, 117, 61, 34, 47, 0.720, 103, 28, 33, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'steve', 22, 124, 129, 55, 34, 32, 0.704, 92, 31, 35, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'davo', 32, 125, 111, 34, 27, 33, 0.716, 100, 30, 42, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (7, 2019, 'bark', 46, 148, 97, 48, 26, 44, 0.633, 95, 23, 28, 18);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'karl', 51, 147, 94, 55, 22, 51, 0.627, 107, 20, 33, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'shust', 43, 131, 105, 46, 50, 42, 0.636, 92, 20, 32, 8);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'milbs', 63, 146, 55, 63, 47, 27, 0.706, 58, 26, 13, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'fewy', 58, 148, 74, 62, 0, 32, 0.667, 79, 16, 19, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'schlong', 55, 119, 94, 34, 44, 46, 0.685, 98, 20, 31, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'salc', 42, 122, 112, 35, 33, 59, 0.650, 109, 21, 38, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'frank', 44, 124, 94, 29, 18, 47, 0.628, 113, 18, 29, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'cost', 41, 107, 93, 47, 24, 43, 0.740, 85, 13, 24, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'doe', 62, 142, 112, 46, 45, 26, 0.654, 125, 15, 51, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'sam', 58, 140, 84, 40, 34, 38, 0.741, 87, 27, 25, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'jim', 29, 132, 113, 48, 44, 50, 0.694, 110, 29, 35, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'calv', 20, 131, 127, 48, 13, 40, 0.694, 111, 34, 40, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'staff', 70, 134, 83, 66, 37, 41, 0.747, 84, 37, 28, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'gab', 29, 154, 95, 57, 39, 34, 0.695, 103, 40, 35, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'kev', 51, 139, 92, 52, 38, 37, 0.701, 97, 32, 28, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'bark', 29, 143, 108, 46, 27, 43, 0.697, 93, 22, 33, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'davo', 17, 116, 125, 40, 23, 40, 0.660, 111, 19, 33, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (8, 2019, 'steve', 33, 154, 119, 58, 37, 46, 0.678, 104, 34, 39, 13);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'schlong', 26, 126, 110, 57, 38, 42, 0.725, 90, 19, 23, 35);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'fewy', 48, 159, 110, 56, 0, 49, 0.729, 94, 26, 21, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'jim', 49, 156, 87, 56, 34, 40, 0.728, 98, 17, 40, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'bark', 47, 135, 94, 58, 24, 46, 0.716, 77, 29, 25, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'staff', 99, 150, 94, 75, 29, 37, 0.762, 77, 20, 28, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'davo', 47, 146, 124, 51, 24, 33, 0.759, 102, 37, 31, 27);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'kev', 48, 122, 99, 64, 41, 26, 0.783, 77, 29, 22, 25);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'steve', 31, 149, 119, 57, 39, 38, 0.757, 117, 26, 44, 8);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'salc', 34, 122, 93, 40, 6, 41, 0.726, 89, 27, 25, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'shust', 36, 149, 102, 59, 50, 40, 0.693, 95, 21, 26, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'milbs', 95, 138, 68, 63, 62, 23, 0.772, 81, 22, 17, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'cost', 46, 131, 99, 60, 32, 42, 0.722, 97, 13, 36, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'sam', 55, 165, 97, 62, 37, 30, 0.679, 106, 29, 38, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'karl', 43, 149, 106, 61, 33, 48, 0.698, 99, 26, 32, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'frank', 58, 101, 102, 38, 23, 44, 0.739, 94, 12, 27, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'calv', 27, 132, 99, 42, 7, 43, 0.697, 83, 33, 18, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'doe', 59, 141, 112, 37, 33, 25, 0.668, 120, 15, 43, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (9, 2019, 'gab', 36, 135, 120, 66, 23, 33, 0.725, 76, 24, 15, 24);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'fewy', 58, 152, 86, 55, 2, 50, 0.714, 92, 27, 18, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'cost', 34, 119, 105, 54, 12, 46, 0.732, 89, 12, 22, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'sam', 51, 174, 103, 50, 44, 42, 0.664, 119, 23, 45, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'salc', 33, 145, 104, 43, 10, 62, 0.655, 107, 30, 41, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'milbs', 56, 138, 71, 58, 36, 20, 0.651, 79, 29, 13, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'calv', 13, 143, 113, 39, 48, 44, 0.758, 113, 32, 34, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'gab', 16, 141, 89, 50, 21, 40, 0.661, 86, 36, 26, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'karl', 16, 133, 99, 43, 27, 40, 0.659, 102, 41, 33, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'frank', 58, 117, 99, 42, 9, 41, 0.736, 83, 21, 31, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'bark', 44, 143, 83, 51, 3, 28, 0.695, 76, 20, 27, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'doe', 34, 142, 103, 50, 27, 37, 0.665, 102, 18, 30, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'davo', 34, 133, 94, 48, 34, 42, 0.731, 92, 33, 36, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'jim', 63, 156, 113, 51, 51, 62, 0.651, 122, 26, 47, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'steve', 40, 167, 101, 57, 57, 37, 0.701, 113, 16, 49, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'staff', 60, 139, 105, 48, 37, 41, 0.676, 97, 22, 28, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'kev', 64, 147, 85, 49, 29, 39, 0.694, 82, 28, 28, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'schlong', 38, 108, 97, 39, 40, 44, 0.741, 72, 20, 16, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (10, 2019, 'shust', 30, 120, 92, 53, 79, 42, 0.689, 100, 23, 38, 10);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'schlong', 44, 144, 85, 60, 15, 32, 0.738, 73, 21, 30, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'cost', 43, 143, 97, 71, 34, 54, 0.717, 94, 18, 27, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'sam', 113, 151, 122, 69, 37, 26, 0.762, 99, 23, 45, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'shust', 45, 128, 101, 47, 66, 37, 0.721, 87, 20, 29, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'calv', 14, 112, 107, 46, 28, 44, 0.767, 80, 22, 30, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'fewy', 66, 148, 90, 61, 0, 35, 0.744, 93, 22, 22, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'gab', 20, 126, 100, 64, 26, 30, 0.819, 76, 23, 24, 25);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'salc', 30, 144, 92, 47, 19, 35, 0.678, 89, 22, 30, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'milbs', 54, 155, 95, 68, 36, 17, 0.684, 77, 24, 19, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'bark', 66, 166, 70, 73, 0, 38, 0.733, 82, 25, 16, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'davo', 35, 148, 121, 62, 24, 30, 0.699, 115, 29, 42, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'karl', 69, 145, 90, 65, 38, 30, 0.664, 113, 22, 32, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'frank', 75, 130, 112, 58, 33, 26, 0.764, 86, 21, 31, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'steve', 32, 111, 86, 37, 28, 39, 0.711, 98, 20, 36, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'doe', 60, 165, 128, 51, 13, 40, 0.662, 107, 30, 45, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'kev', 48, 139, 107, 56, 34, 24, 0.776, 88, 29, 21, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'jim', 61, 160, 92, 55, 49, 33, 0.679, 98, 34, 35, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (11, 2019, 'staff', 30, 97, 93, 46, 42, 25, 0.674, 78, 17, 34, 6);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'shust', 32, 93, 55, 42, 37, 36, 0.723, 59, 13, 11, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'cost', 45, 125, 84, 51, 79, 40, 0.775, 77, 21, 27, 27);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'sam', 23, 144, 81, 61, 29, 32, 0.676, 81, 20, 33, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'fewy', 33, 79, 40, 34, 0, 19, 0.697, 46, 11, 1, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'salc', 18, 138, 93, 58, 0, 38, 0.732, 73, 25, 19, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'calv', 26, 137, 122, 48, 8, 37, 0.726, 93, 31, 37, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'milbs', 52, 120, 64, 49, 43, 14, 0.685, 65, 23, 19, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'gab', 34, 137, 58, 50, 19, 27, 0.708, 69, 38, 16, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'karl', 22, 66, 57, 34, 34, 24, 0.675, 57, 12, 9, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'bark', 21, 98, 78, 45, 22, 24, 0.739, 63, 13, 21, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'frank', 32, 117, 93, 48, 0, 20, 0.686, 80, 19, 25, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'davo', 41, 111, 76, 54, 0, 32, 0.765, 82, 27, 30, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'doe', 47, 63, 40, 23, 0, 13, 0.660, 39, 4, 9, 1);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'steve', 55, 140, 89, 63, 26, 38, 0.747, 90, 22, 21, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'jim', 54, 119, 90, 40, 48, 31, 0.660, 101, 17, 33, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'kev', 46, 122, 64, 48, 33, 16, 0.699, 71, 26, 8, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'schlong', 36, 138, 79, 42, 20, 33, 0.705, 97, 23, 38, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (12, 2019, 'staff', 35, 110, 71, 60, 38, 25, 0.691, 68, 24, 15, 22);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'shust', 32, 124, 91, 45, 20, 21, 0.753, 77, 31, 19, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'cost', 16, 116, 90, 51, 63, 29, 0.670, 77, 21, 25, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'sam', 43, 118, 89, 57, 54, 35, 0.696, 66, 14, 21, 4);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'fewy', 96, 105, 75, 53, 0, 32, 0.717, 68, 12, 6, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'salc', 14, 77, 74, 39, 25, 33, 0.788, 63, 25, 18, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'calv', 8, 100, 114, 29, 0, 39, 0.771, 78, 18, 33, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'milbs', 60, 102, 68, 48, 13, 21, 0.747, 51, 10, 13, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'gab', 13, 98, 72, 35, 0, 34, 0.712, 60, 21, 22, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'karl', 72, 112, 73, 45, 83, 16, 0.751, 84, 14, 30, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'bark', 66, 137, 83, 55, 3, 42, 0.682, 86, 23, 28, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'frank', 36, 132, 62, 40, 21, 27, 0.696, 56, 17, 17, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'davo', 51, 116, 95, 46, 40, 40, 0.701, 92, 15, 42, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'doe', 34, 124, 103, 46, 0, 36, 0.789, 100, 16, 38, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'steve', 46, 141, 82, 54, 41, 33, 0.735, 84, 23, 32, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'jim', 27, 118, 78, 50, 38, 30, 0.668, 79, 23, 29, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'kev', 48, 90, 77, 43, 3, 23, 0.772, 49, 17, 9, 2);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'schlong', 45, 123, 84, 54, 54, 38, 0.749, 79, 21, 25, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (13, 2019, 'staff', 50, 101, 66, 49, 19, 38, 0.737, 65, 14, 14, 25);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'shust', 30, 140, 87, 48, 50, 39, 0.767, 81, 25, 36, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'cost', 28, 104, 90, 45, 11, 35, 0.696, 67, 17, 25, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'sam', 68, 127, 118, 66, 6, 19, 0.751, 85, 17, 19, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'fewy', 12, 117, 55, 52, 0, 29, 0.797, 50, 23, 12, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'salc', 16, 103, 66, 40, 24, 26, 0.704, 59, 29, 16, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'calv', 43, 75, 39, 29, 7, 25, 0.728, 47, 14, 10, 7);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'milbs', 35, 136, 94, 58, 48, 32, 0.770, 62, 31, 15, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'gab', 18, 134, 88, 53, 25, 39, 0.644, 85, 25, 33, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'karl', 20, 85, 63, 33, 16, 23, 0.669, 55, 15, 20, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'bark', 42, 123, 114, 54, 9, 41, 0.717, 96, 22, 33, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'frank', 39, 135, 85, 50, 48, 44, 0.664, 94, 17, 43, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'davo', 55, 108, 70, 53, 40, 30, 0.736, 67, 23, 19, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'doe', 32, 107, 81, 34, 0, 32, 0.713, 80, 22, 25, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'steve', 26, 99, 50, 46, 0, 25, 0.738, 46, 11, 14, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'jim', 46, 90, 41, 37, 0, 21, 0.649, 54, 15, 12, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'kev', 22, 93, 56, 40, 20, 22, 0.691, 59, 18, 14, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'schlong', 52, 106, 97, 41, 31, 63, 0.704, 90, 9, 29, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (14, 2019, 'staff', 31, 109, 76, 45, 78, 37, 0.724, 79, 28, 32, 29);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'davo', 74, 125, 109, 57, 42, 26, 0.709, 101, 14, 28, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'salc', 27, 161, 107, 51, 35, 36, 0.705, 110, 34, 42, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'jim', 61, 144, 75, 50, 59, 22, 0.635, 96, 25, 22, 32);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'doe', 36, 142, 114, 53, 1, 51, 0.609, 121, 24, 36, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'milbs', 38, 159, 61, 50, 27, 29, 0.682, 63, 29, 17, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'steve', 28, 131, 107, 49, 30, 42, 0.685, 93, 17, 30, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'kev', 21, 118, 101, 41, 13, 49, 0.658, 86, 18, 21, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'karl', 23, 127, 99, 42, 10, 43, 0.664, 105, 21, 34, 25);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'staff', 70, 104, 97, 46, 73, 29, 0.687, 85, 13, 29, 25);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'frank', 47, 138, 128, 36, 45, 48, 0.718, 130, 19, 50, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'bark', 39, 155, 113, 46, 21, 43, 0.679, 109, 26, 40, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'fewy', 38, 131, 69, 44, 3, 46, 0.760, 63, 34, 20, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'gab', 2, 143, 85, 44, 34, 54, 0.645, 91, 38, 28, 27);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'shust', 36, 162, 113, 54, 62, 34, 0.684, 122, 33, 32, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'calv', 16, 157, 111, 47, 31, 43, 0.653, 103, 32, 48, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'cost', 57, 150, 97, 53, 21, 51, 0.640, 99, 23, 36, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'schlong', 61, 137, 99, 49, 40, 34, 0.644, 101, 23, 35, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (15, 2019, 'sam', 53, 160, 89, 51, 39, 43, 0.631, 102, 34, 38, 16);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'schlong', 59, 134, 100, 49, 44, 36, 0.709, 93, 25, 28, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'calv', 25, 145, 115, 56, 24, 45, 0.700, 102, 27, 35, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'jim', 78, 168, 88, 62, 36, 28, 0.711, 115, 30, 45, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'karl', 12, 145, 105, 57, 22, 37, 0.660, 89, 25, 33, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'doe', 46, 142, 80, 38, 13, 35, 0.617, 106, 15, 42, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'frank', 39, 141, 86, 52, 35, 44, 0.727, 90, 19, 37, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'sam', 43, 155, 108, 57, 27, 39, 0.684, 98, 35, 32, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'gab', 38, 121, 136, 38, 53, 49, 0.747, 108, 28, 38, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'bark', 52, 139, 112, 51, 24, 51, 0.721, 112, 29, 36, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'cost', 33, 119, 106, 35, 37, 39, 0.676, 88, 25, 40, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'davo', 39, 127, 98, 57, 59, 36, 0.760, 102, 16, 32, 41);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'shust', 12, 120, 68, 42, 34, 34, 0.702, 58, 21, 12, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'steve', 39, 136, 97, 55, 39, 41, 0.691, 88, 16, 26, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'fewy', 58, 166, 69, 71, 4, 47, 0.711, 75, 34, 20, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'kev', 71, 125, 81, 49, 13, 31, 0.748, 80, 21, 20, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'salc', 36, 158, 100, 53, 29, 46, 0.709, 103, 30, 37, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'staff', 34, 111, 96, 47, 36, 40, 0.773, 85, 20, 28, 24);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (16, 2019, 'milbs', 34, 127, 80, 69, 1, 23, 0.754, 53, 25, 10, 10);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'calv', 43, 127, 110, 39, 45, 53, 0.608, 112, 30, 45, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'bark', 51, 133, 111, 51, 14, 47, 0.730, 103, 29, 28, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'schlong', 22, 141, 105, 51, 41, 30, 0.732, 98, 25, 27, 30);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'gab', 45, 146, 109, 42, 36, 59, 0.655, 109, 30, 44, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'sam', 54, 138, 89, 46, 36, 43, 0.700, 68, 25, 30, 30);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'davo', 19, 109, 97, 39, 43, 38, 0.723, 95, 24, 32, 30);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'steve', 44, 159, 105, 54, 32, 39, 0.708, 115, 28, 43, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'cost', 17, 127, 98, 50, 41, 43, 0.689, 88, 28, 23, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'kev', 97, 148, 98, 78, 8, 33, 0.715, 90, 18, 23, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'shust', 35, 148, 106, 46, 31, 38, 0.642, 96, 28, 27, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'staff', 74, 154, 90, 62, 28, 41, 0.762, 97, 19, 38, 26);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'fewy', 42, 127, 85, 45, 17, 37, 0.689, 81, 30, 23, 26);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'doe', 56, 159, 111, 52, 24, 53, 0.622, 119, 15, 42, 7);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'milbs', 48, 165, 99, 56, 34, 40, 0.739, 70, 27, 18, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'frank', 23, 123, 87, 36, 35, 45, 0.690, 94, 19, 41, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'karl', 62, 137, 123, 47, 16, 44, 0.619, 105, 22, 31, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'jim', 31, 166, 92, 49, 30, 58, 0.678, 107, 25, 34, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (17, 2019, 'salc', 14, 149, 84, 51, 42, 30, 0.695, 80, 36, 27, 24);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'schlong', 36, 151, 84, 60, 27, 36, 0.757, 80, 29, 28, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'bark', 39, 129, 95, 53, 20, 35, 0.746, 63, 24, 16, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'gab', 27, 151, 110, 50, 30, 53, 0.697, 109, 33, 35, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'davo', 30, 126, 105, 61, 34, 46, 0.706, 101, 21, 36, 17);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'calv', 46, 132, 124, 66, 19, 51, 0.746, 101, 18, 29, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'steve', 35, 133, 105, 53, 40, 34, 0.735, 75, 24, 30, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'kev', 28, 116, 95, 39, 27, 35, 0.758, 87, 25, 20, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'sam', 54, 155, 142, 60, 39, 34, 0.734, 122, 32, 35, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'staff', 48, 133, 86, 53, 33, 41, 0.758, 79, 28, 33, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'cost', 53, 115, 85, 54, 34, 40, 0.745, 78, 9, 23, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'staff', 48, 133, 86, 53, 33, 41, 0.758, 79, 28, 33, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'cost', 53, 115, 85, 54, 34, 40, 0.745, 78, 9, 23, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'doe', 72, 163, 87, 61, 24, 37, 0.676, 97, 20, 36, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'fewy', 67, 108, 91, 52, 19, 33, 0.784, 70, 13, 18, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'frank', 59, 141, 104, 52, 21, 47, 0.673, 98, 20, 42, 4);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'salc', 44, 134, 84, 45, 44, 41, 0.748, 79, 20, 28, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'milbs', 51, 146, 84, 56, 48, 23, 0.670, 63, 27, 15, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (18, 2019, 'karl', 84, 125, 103, 40, 30, 34, 0.693, 108, 14, 45, 16);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'milbs', 70, 154, 78, 65, 60, 28, 0.737, 73, 29, 19, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'salc', 29, 149, 93, 42, 39, 40, 0.698, 92, 25, 36, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'karl', 60, 128, 100, 54, 27, 37, 0.737, 89, 12, 24, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'fewy', 80, 120, 91, 54, 0, 41, 0.782, 73, 15, 16, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'frank', 63, 133, 104, 67, 22, 33, 0.717, 103, 22, 37, 4);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'shust', 26, 145, 87, 60, 36, 34, 0.733, 62, 24, 21, 8);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'doe', 63, 151, 110, 57, 12, 39, 0.701, 109, 18, 38, 7);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'cost', 41, 120, 88, 46, 23, 31, 0.721, 77, 18, 33, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'staff', 50, 144, 93, 50, 19, 37, 0.692, 102, 37, 28, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'calv', 32, 119, 115, 47, 35, 37, 0.684, 96, 34, 48, 18);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'jim', 71, 156, 99, 53, 49, 38, 0.702, 98, 26, 26, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'sam', 62, 160, 118, 60, 33, 38, 0.683, 101, 16, 35, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'kev', 83, 149, 100, 61, 10, 29, 0.759, 100, 26, 22, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'gab', 16, 134, 107, 37, 12, 47, 0.714, 102, 33, 28, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'bark', 61, 128, 90, 45, 12, 29, 0.693, 84, 16, 25, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'steve', 54, 121, 110, 51, 34, 39, 0.723, 93, 17, 34, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'schlong', 43, 124, 96, 52, 42, 46, 0.764, 98, 14, 34, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (19, 2019, 'davo', 63, 119, 104, 60, 23, 43, 0.789, 87, 18, 29, 32);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'jim', 28, 150, 92, 66, 26, 29, 0.694, 85, 23, 23, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'frank', 35, 149, 99, 59, 24, 52, 0.710, 88, 28, 38, 8);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'sam', 59, 137, 97, 62, 32, 21, 0.735, 90, 16, 25, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'steve', 31, 135, 97, 64, 30, 26, 0.711, 85, 18, 24, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'doe', 82, 165, 118, 61, 9, 42, 0.703, 121, 21, 47, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'kev', 60, 147, 101, 74, 24, 39, 0.730, 82, 34, 25, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'bark', 27, 124, 116, 57, 23, 38, 0.725, 86, 19, 29, 5);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'fewy', 54, 134, 76, 53, 17, 37, 0.724, 74, 32, 12, 21);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'schlong', 20, 146, 94, 59, 38, 39, 0.750, 90, 32, 36, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'calv', 39, 141, 110, 59, 14, 41, 0.733, 81, 23, 38, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'milbs', 65, 149, 89, 80, 28, 26, 0.752, 66, 32, 12, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'karl', 80, 133, 97, 58, 29, 39, 0.717, 97, 17, 31, 27);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'staff', 47, 146, 97, 60, 22, 47, 0.724, 92, 27, 39, 5);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'salc', 44, 139, 91, 44, 43, 38, 0.722, 69, 23, 24, 15);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'gab', 26, 149, 100, 60, 32, 48, 0.767, 92, 25, 32, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (20, 2019, 'davo', 45, 117, 88, 56, 35, 26, 0.717, 90, 19, 29, 11);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'jim', 51, 177, 87, 62, 29, 37, 0.659, 100, 23, 23, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'doe', 41, 161, 95, 54, 8, 44, 0.621, 97, 26, 38, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'bark', 38, 127, 95, 43, 34, 46, 0.707, 79, 26, 25, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'steve', 46, 155, 99, 63, 42, 54, 0.717, 103, 27, 38, 10);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'kev', 37, 109, 105, 49, 5, 42, 0.734, 86, 26, 22, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'fewy', 36, 116, 84, 46, 0, 45, 0.720, 72, 27, 12, 23);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'schlong', 9, 155, 110, 48, 29, 52, 0.709, 92, 23, 28, 31);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'staff', 21, 142, 79, 48, 35, 52, 0.692, 83, 20, 37, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'milbs', 63, 154, 65, 65, 54, 19, 0.708, 67, 29, 13, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'gab', 38, 142, 99, 36, 26, 55, 0.693, 103, 27, 37, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'davo', 25, 108, 114, 36, 27, 40, 0.721, 106, 23, 31, 28);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (21, 2019, 'salc', 19, 131, 86, 47, 0, 25, 0.668, 90, 25, 34, 16);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'frank', 57, 129, 101, 42, 9, 32, 0.665, 104, 16, 32, 6);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'steve', 40, 133, 121, 51, 28, 37, 0.736, 125, 21, 42, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'jim', 89, 138, 83, 48, 60, 33, 0.647, 91, 17, 20, 12);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'sam', 27, 136, 90, 42, 16, 38, 0.699, 91, 27, 28, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'doe', 59, 135, 114, 52, 29, 46, 0.727, 104, 11, 41, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'bark', 29, 123, 101, 50, 31, 48, 0.643, 96, 16, 33, 20);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'milbs', 44, 130, 81, 55, 42, 18, 0.744, 57, 31, 11, 13);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'calv', 41, 152, 118, 38, 23, 41, 0.667, 129, 32, 54, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'schlong', 54, 153, 115, 47, 8, 33, 0.724, 95, 28, 40, 16);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'karl', 61, 126, 80, 44, 28, 50, 0.733, 88, 21, 26, 29);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'staff', 38, 128, 101, 40, 21, 40, 0.651, 104, 29, 35, 22);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (22, 2019, 'gab', 19, 142, 103, 48, 41, 42, 0.698, 95, 25, 36, 13);
+
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'jim', 60, 155, 130, 58, 42, 32, 0.723, 105, 25, 39, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'steve', 52, 130, 102, 61, 24, 39, 0.694, 93, 19, 43, 7);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'frank', 51, 134, 124, 46, 22, 46, 0.694, 113, 12, 45, 4);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'sam', 42, 140, 98, 47, 58, 22, 0.718, 88, 26, 28, 14);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'karl', 46, 115, 90, 35, 43, 47, 0.610, 89, 16, 27, 9);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'calv', 36, 163, 112, 44, 34, 50, 0.676, 121, 16, 56, 11);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'schlong', 59, 143, 101, 59, 9, 31, 0.709, 71, 29, 26, 19);
+INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES (23, 2019, 'milbs', 63, 120, 63, 45, 3, 14, 0.678, 55, 27, 10, 9);
+
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'jim', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'staff', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'schlong', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'kev', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'doe', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'frank', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'karl', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'milbs', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (1, 2019, 'salc', 'fewy');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'jim', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'staff', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'schlong', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'doe', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'frank', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'karl', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'milbs', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'salc', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (2, 2019, 'shust', 'fewy');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'jim', 'schlong');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'staff', 'doe');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'kev', 'frank');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'karl', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'milbs', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'salc', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'gab', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'calv', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (3, 2019, 'sam', 'cost');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'jim', 'frank');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'gab', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'bark', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'davo', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'salc', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'kev', 'milbs');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'staff', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'sam', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (4, 2019, 'schlong', 'doe');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'jim', 'milbs');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'davo', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'sam', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'gab', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'kev', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'staff', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'shust', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'doe', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (5, 2019, 'schlong', 'frank');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'schlong', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'milbs', 'frank');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'doe', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'jim', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'staff', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'kev', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'sam', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'davo', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (6, 2019, 'gab', 'bark');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'schlong', 'milbs');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'karl', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'frank', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'doe', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'jim', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'staff', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'kev', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'gab', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (7, 2019, 'davo', 'bark');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'karl', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'milbs', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'schlong', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'frank', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'doe', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'jim', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'staff', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'kev', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (8, 2019, 'davo', 'steve');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'schlong', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'jim', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'staff', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'kev', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'salc', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'milbs', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'sam', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'frank', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (9, 2019, 'doe', 'gab');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'fewy', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'sam', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'milbs', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'gab', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'frank', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'doe', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'jim', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'staff', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (10, 2019, 'schlong', 'shust');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'schlong', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'sam', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'calv', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'gab', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'milbs', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'davo', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'frank', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'doe', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (11, 2019, 'jim', 'staff');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'shust', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'sam', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'salc', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'milbs', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'karl', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'frank', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'doe', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'jim', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (12, 2019, 'schlong', 'staff');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'shust', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'sam', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'salc', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'milbs', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'karl', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'frank', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'doe', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'jim', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (13, 2019, 'schlong', 'staff');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'shust', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'sam', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'salc', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'milbs', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'karl', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'frank', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'doe', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'jim', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (14, 2019, 'schlong', 'staff');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'davo', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'jim', 'doe');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'milbs', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'kev', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'staff', 'frank');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'bark', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'gab', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'calv', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (15, 2019, 'schlong', 'sam');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'schlong', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'jim', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'doe', 'frank');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'sam', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'bark', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'davo', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'steve', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'kev', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (16, 2019, 'staff', 'milbs');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'calv', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'schlong', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'sam', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'steve', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'kev', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'staff', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'doe', 'milbs');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'frank', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (17, 2019, 'jim', 'salc');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'schlong', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'gab', 'davo');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'calv', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'kev', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'staff', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'staff', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'doe', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'frank', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (18, 2019, 'milbs', 'karl');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'milbs', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'karl', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'frank', 'shust');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'doe', 'cost');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'staff', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'jim', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'kev', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'bark', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (19, 2019, 'schlong', 'davo');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'jim', 'frank');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'sam', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'doe', 'kev');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'bark', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'schlong', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'milbs', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'staff', 'salc');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (20, 2019, 'gab', 'davo');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (21, 2019, 'jim', 'doe');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (21, 2019, 'bark', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (21, 2019, 'kev', 'fewy');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (21, 2019, 'schlong', 'staff');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (21, 2019, 'milbs', 'gab');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (21, 2019, 'davo', 'salc');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (22, 2019, 'frank', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (22, 2019, 'jim', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (22, 2019, 'doe', 'bark');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (22, 2019, 'milbs', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (22, 2019, 'schlong', 'karl');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (22, 2019, 'staff', 'gab');
+
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (23, 2019, 'jim', 'steve');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (23, 2019, 'frank', 'sam');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (23, 2019, 'karl', 'calv');
+INSERT INTO round_matchup (rm_round, rm_year, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (23, 2019, 'schlong', 'milbs');

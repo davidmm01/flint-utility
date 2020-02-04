@@ -4,6 +4,9 @@ import sys
 
 # also requires PyMySQL to be installed
 
+# TODO: refactor this to take the files as a a command-line argument
+# TODO: refactor this to use the argparse library or something good like that  
+
 """
 Script for generating SQL to populate round_score and  round_matchup tables
 
@@ -22,6 +25,7 @@ formatter_feeder_files = [
 ]
 
 # mapping for going from team name to a coach id as per coach database
+# TODO: grab this out of a file or db or something, so we don't gotta touch source code all the time...
 coach_map = {
     'Stand By Crouch': "'jim'",
     'Green Heinekens': "'schlong'",
