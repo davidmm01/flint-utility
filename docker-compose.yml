@@ -10,4 +10,9 @@ services:
         build:
             context: ./backend/
         ports:
-            - '1323:1323'
+         - '1323:1323'
+    frontend:
+        build:
+            context: ./frontend/
+        ports:
+         - '8000:80'
