@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"fmt"
 	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -31,10 +30,8 @@ func main() {
 
 	// coach endpoints
 	e.GET("/coaches", func(c echo.Context) error {
-		fmt.Println("got a request for the coaches endpoint right here")
 		// TODO: unit test for this endpoint
 		year, _ := strconv.Atoi(c.QueryParam("year"))
-		fmt.Println("using this year:", year)
 		coaches := getAllCoaches(year)
 		return c.JSON(http.StatusOK, coaches)
 	})
@@ -91,8 +88,6 @@ func main() {
 	// TODO: query params that are not optional should return helpful errors when not provided
 	//       come up with a consistent and pretty way of doing it, i don't think we should replicate
 	//       the way its been done for the 'records' endpoint for each other endpoint
-
-	// TODO: averages endpoint
 
 	// TODO: LUCKY BOY! endpoint
 	// 		when u have a saltyboy that could only beat 1 opponent that round, and that happened to be their opponent!

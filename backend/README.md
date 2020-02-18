@@ -1,6 +1,10 @@
-# TODO: this readme
+# Flint Utility - Backend
 
-### Start the backend:
+TODO: this readme
+
+## Building & Running
+
+### Build and Start the backend
 
 `go build -o main .`
 
@@ -8,15 +12,13 @@
 
 runs on port 1323
 
-
 ### Run the backend tests
 
    `go test -v`
 
+## Third Party Packages
 
-### Go Packages
-
-flint-utility itself only contains main so far (consider creating a models or a database package if they grow complex)
+TODO: LIST THEM ALL WITH LINKS AND DESCRIPTIONS ETC
 
 Externals include gorp (db orm), echo (minimal framework), go-sql-driver/mysql, stretchr/testify (nice asserts/testing support)
 
