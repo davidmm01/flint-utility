@@ -39,3 +39,9 @@ TODO
 To connect:
 
 TODO
+
+## To dump the schema
+
+While the database is up, run:
+
+`mysqldump -h 127.0.0.1 -P 3306 -u root -p --all-databases > schema.sql`

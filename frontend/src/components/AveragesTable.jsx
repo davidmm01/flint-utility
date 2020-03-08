@@ -15,7 +15,8 @@ class AveragesTable extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:1323/averages?year=2019`)
+        if (this.props.year !== ""){
+        fetch(`http://localhost:1323/averages?year=${this.props.year}`)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -31,6 +32,31 @@ class AveragesTable extends React.Component {
                     })
                 }
             )
+        }
+    }
+
+    componentDidUpdate(previousYear){
+        if (previousYear.year !== this.props.year){
+            // TODO handle this code duplication with componentDidMount
+            if (this.props.year !== ""){
+                fetch(`http://localhost:1323/averages?year=${this.props.year}`)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                        this.setState({ 
+                            isLoaded: true,
+                            averages: result
+                        })
+                        },
+                        (error) => {
+                            this.setState({
+                                isLoaded: true,
+                                error: error
+                            })
+                        }
+                )
+            }
+        }
     }
 
     render() {
@@ -42,6 +68,7 @@ class AveragesTable extends React.Component {
         } else {
             return (
                 <>
+                    <p>year property is: {this.props.year}</p>
                     {/* TODO: make the table sortable */}
                     <Table striped bordered hover>
                         <thead>

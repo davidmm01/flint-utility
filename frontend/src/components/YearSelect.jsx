@@ -23,7 +23,8 @@ class YearSelect extends React.Component {
                 this.setState({ 
                     isLoaded: true,
                     years: result
-                })
+                });
+                this.props.action(2019)
                 },
                 (error) => {
                     this.setState({
@@ -45,8 +46,8 @@ class YearSelect extends React.Component {
             <>
             <ButtonToolbar>
                 <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                    <ToggleButton value={1}>{years}</ToggleButton>
-                    <ToggleButton value={2}>Room for more</ToggleButton>
+                    <ToggleButton value={1} onChange={() => this.props.action(2019)} >{years}</ToggleButton>
+                    {/* <ToggleButton value={2} onChange={() => this.props.action(2018)} >Room for more</ToggleButton> */}
                 </ToggleButtonGroup>
             </ButtonToolbar>
             </>
