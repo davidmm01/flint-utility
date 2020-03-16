@@ -1,6 +1,5 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
-import Container from 'react-bootstrap/Container'
+import BootstrapTable from 'react-bootstrap-table-next';
 
 // remember: create with rafce
 
@@ -35,6 +34,20 @@ class AveragesTable extends React.Component {
         }
     }
 
+    transformAveragesToTableData(averages){
+        var output = []
+        for (const average of averages){
+            var current = {};
+            current['coach'] = average.Coach;
+            for (const category of average.Categories) {
+                current[category.Name] = category.Value;
+            }
+            current['Coach'] = average.Coach;
+            output.push(current);
+        }
+        return output;
+    }
+
     componentDidUpdate(previousYear){
         if (previousYear.year !== this.props.year){
             // TODO handle this code duplication with componentDidMount
@@ -65,50 +78,23 @@ class AveragesTable extends React.Component {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded){
             return <div>Loading...</div>
-        } else {
+        } else {            
+            const columns = [
+                { dataField: 'Coach', text: 'Coach', sort: true },
+                { dataField: 'score', text: 'Score', sort: true },
+                { dataField: 'kicks', text: 'Kicks', sort: true },
+                { dataField: 'handballs', text: 'Handballs', sort: true },
+                { dataField: 'marks', text: 'Marks', sort: true },
+                { dataField: 'hitouts', text: 'Hitouts', sort: true },
+                { dataField: 'tackles', text: 'Tackles', sort: true },
+                { dataField: 'disposalEfficiency', text: 'Disposal Efficiency', sort: true },
+                { dataField: 'contestedPosessions', text: 'Contested Possessions', sort: true },
+                { dataField: 'rebound50s', text: 'Rebound 50s', sort: true },
+                { dataField: 'clearances', text: 'Clearances', sort: true },
+                { dataField: 'spoils', text: 'Spoils', sort: true }
+            ];
             return (
-                <>
-                    <p>year property is: {this.props.year}</p>
-                    {/* TODO: make the table sortable */}
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                {/* TODO:  generate number of categories from an endpoint */}
-                                <th>Coach</th>
-                                <th>Score</th>
-                                <th>Kicks</th>
-                                <th>Handballs</th>
-                                <th>Marks</th>
-                                <th>Hitouts</th>
-                                <th>Tackles</th>
-                                <th>D%</th>
-                                <th>Contesteds</th>
-                                <th>R50s</th>
-                                <th>Clearances</th>
-                                <th>Spoils</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {averages.map(average => (
-                                <tr>
-                                    {/* TODO: don't hardcode indexes like this, make a function to discover the right one */}
-                                    <td>{average.Coach}</td>
-                                    <td>{average.Categories[0].Value}</td>
-                                    <td>{average.Categories[1].Value}</td>
-                                    <td>{average.Categories[2].Value}</td>
-                                    <td>{average.Categories[3].Value}</td>
-                                    <td>{average.Categories[4].Value}</td>
-                                    <td>{average.Categories[5].Value}</td>
-                                    <td>{average.Categories[6].Value}</td>
-                                    <td>{average.Categories[7].Value}</td>
-                                    <td>{average.Categories[8].Value}</td>
-                                    <td>{average.Categories[9].Value}</td>
-                                    <td>{average.Categories[10].Value}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </>
+                <BootstrapTable keyField='id' data={ this.transformAveragesToTableData(this.state.averages) } columns={ columns } />
             );
         }
     }
