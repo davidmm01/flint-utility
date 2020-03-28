@@ -1,4 +1,5 @@
 import React from 'react'
+
 import BootstrapTable from 'react-bootstrap-table-next';
 
 // remember: create with rafce
@@ -14,8 +15,8 @@ class AveragesTable extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.year !== ""){
-        fetch(`http://localhost:1323/averages?year=${this.props.year}`)
+        if (this.props.year !== "" && this.props.from !== "" && this.props.to !== ""){
+        fetch(`http://localhost:1323/averages?year=${this.props.year}&round_from=${this.props.from}&round_to=${this.props.to}`)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -48,11 +49,11 @@ class AveragesTable extends React.Component {
         return output;
     }
 
-    componentDidUpdate(previousYear){
-        if (previousYear.year !== this.props.year){
+    componentDidUpdate(previous){
+        if (previous.year !== this.props.year || previous.from !== this.props.from || previous.to !== this.props.to){
             // TODO handle this code duplication with componentDidMount
             if (this.props.year !== ""){
-                fetch(`http://localhost:1323/averages?year=${this.props.year}`)
+                fetch(`http://localhost:1323/averages?year=${this.props.year}&round_from=${this.props.from}&round_to=${this.props.to}`)
                     .then(res => res.json())
                     .then(
                         (result) => {

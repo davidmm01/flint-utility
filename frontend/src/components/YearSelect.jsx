@@ -1,7 +1,11 @@
 import React from 'react'
+
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 import ToggleButton from 'react-bootstrap/ToggleButton'
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 
 class YearSelect extends React.Component {
 
@@ -43,14 +47,20 @@ class YearSelect extends React.Component {
             return <div>Loading...</div>
         } else {
             return (
-            <>
-            <ButtonToolbar>
-                <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                    <ToggleButton value={1} onChange={() => this.props.action(2019)} >{years}</ToggleButton>
-                    {/* <ToggleButton value={2} onChange={() => this.props.action(2018)} >Room for more</ToggleButton> */}
-                </ToggleButtonGroup>
-            </ButtonToolbar>
-            </>
+            <Container>
+                <Row>
+                    <Col xs={2} sm={2} md={2} lg={2} xl={2} > <p align="right">Year </p></Col>
+                    <Col xs={10} sm={10} md={10} lg={10} xl={10}>
+
+                        <ButtonToolbar>
+                            <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+                                <ToggleButton value={1} onChange={() => this.props.action(2019)} >{years}</ToggleButton>
+                                {/* <ToggleButton value={2} onChange={() => this.props.action(2018)} >Room for more</ToggleButton> */}
+                            </ToggleButtonGroup>
+                        </ButtonToolbar>
+                    </Col>
+                </Row>
+            </Container>
             )
         }
     }

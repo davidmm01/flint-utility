@@ -78,7 +78,9 @@ func main() {
 		// TODO: unit test for this endpoint
 		// TODO: consider removing finals from this metric
 		year, _ := strconv.Atoi(c.QueryParam("year"))
-		payload := getAverages(year)
+		roundFrom, _ := strconv.Atoi(c.QueryParam("round_from"))
+		roundTo, _ := strconv.Atoi(c.QueryParam("round_to"))
+		payload := getAverages(year, roundFrom, roundTo)
 		return c.JSON(http.StatusOK, payload)
 	})
 

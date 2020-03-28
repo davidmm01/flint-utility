@@ -1,7 +1,8 @@
 import React from 'react'
+
+import Averages from './Averages';
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
-import Averages from './Averages';
 
 const MainTabs = () => {
     return (

@@ -15,8 +15,7 @@ type Averages struct {
 	Categories []Average
 }
 
-func getAverages(year int) []Averages {
-
+func getAverages(year int, roundFrom int, roundTo int) []Averages {
 	var averages []Averages
 
 	// calculate average values
@@ -27,27 +26,27 @@ func getAverages(year int) []Averages {
 	//       then the categoryMap creation can also be moved to a nice for loop
 	for index, element := range coaches {
 		averages = append(averages, Averages{Coach: element.ID})
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "score", Value: getAverageValue(year, element.ID, "rs_score")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "score", Value: getAverageValue(year, element.ID, "rs_score", roundFrom, roundTo)})
 		categoryMap["score"] = 0
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "kicks", Value: getAverageValue(year, element.ID, "rs_kicks")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "kicks", Value: getAverageValue(year, element.ID, "rs_kicks", roundFrom, roundTo)})
 		categoryMap["kicks"] = 1
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "handballs", Value: getAverageValue(year, element.ID, "rs_handballs")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "handballs", Value: getAverageValue(year, element.ID, "rs_handballs", roundFrom, roundTo)})
 		categoryMap["handballs"] = 2
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "marks", Value: getAverageValue(year, element.ID, "rs_marks")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "marks", Value: getAverageValue(year, element.ID, "rs_marks", roundFrom, roundTo)})
 		categoryMap["marks"] = 3
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "hitouts", Value: getAverageValue(year, element.ID, "rs_hitouts")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "hitouts", Value: getAverageValue(year, element.ID, "rs_hitouts", roundFrom, roundTo)})
 		categoryMap["hitouts"] = 4
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "tackles", Value: getAverageValue(year, element.ID, "rs_tackles")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "tackles", Value: getAverageValue(year, element.ID, "rs_tackles", roundFrom, roundTo)})
 		categoryMap["tackles"] = 5
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "disposalEfficiency", Value: getAverageValue(year, element.ID, "rs_disposal_efficiency")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "disposalEfficiency", Value: getAverageValue(year, element.ID, "rs_disposal_efficiency", roundFrom, roundTo)})
 		categoryMap["disposalEfficiency"] = 6
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "contestedPosessions", Value: getAverageValue(year, element.ID, "rs_contested_posessions")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "contestedPosessions", Value: getAverageValue(year, element.ID, "rs_contested_posessions", roundFrom, roundTo)})
 		categoryMap["contestedPosessions"] = 7
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "rebound50s", Value: getAverageValue(year, element.ID, "rs_rebound_50s")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "rebound50s", Value: getAverageValue(year, element.ID, "rs_rebound_50s", roundFrom, roundTo)})
 		categoryMap["rebound50s"] = 8
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "clearances", Value: getAverageValue(year, element.ID, "rs_clearances")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "clearances", Value: getAverageValue(year, element.ID, "rs_clearances", roundFrom, roundTo)})
 		categoryMap["clearances"] = 9
-		averages[index].Categories = append(averages[index].Categories, Average{Name: "spoils", Value: getAverageValue(year, element.ID, "rs_spoils")})
+		averages[index].Categories = append(averages[index].Categories, Average{Name: "spoils", Value: getAverageValue(year, element.ID, "rs_spoils", roundFrom, roundTo)})
 		categoryMap["spoils"] = 10
 	}
 
@@ -93,8 +92,8 @@ func getAverages(year int) []Averages {
 	return averages
 }
 
-func getAverageValue(year int, coach string, category string) float32 {
-	query := fmt.Sprintf("SELECT AVG(%s) FROM round_score WHERE rs_c_coach_id='%s' AND rs_year=%d;", category, coach, year)
+func getAverageValue(year int, coach string, category string, roundFrom int, roundTo int) float32 {
+	query := fmt.Sprintf("SELECT AVG(%s) FROM round_score WHERE rs_c_coach_id='%s' AND rs_year=%d AND rs_round>=%d AND rs_round<=%d;", category, coach, year, roundFrom, roundTo)
 
 	db := initDb()
 	value64, _ := db.SelectFloat(query)
