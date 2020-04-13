@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 import Averages from './Averages';
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
+import Records from './Records';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 const MainTabs = () => {
     return (
@@ -11,7 +12,7 @@ const MainTabs = () => {
                 <Averages />
             </Tab>
             <Tab eventKey="records" title="Records">
-                TWO
+                <Records />
             </Tab>
         </Tabs>
     )

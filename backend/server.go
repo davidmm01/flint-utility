@@ -60,7 +60,8 @@ func main() {
 	e.GET("/records", func(c echo.Context) error {
 		// TODO: unit test for this endpoint
 		year, _ := strconv.Atoi(c.QueryParam("year"))
-		round, _ := strconv.Atoi(c.QueryParam("round")) // optional param
+		roundFrom, _ := strconv.Atoi(c.QueryParam("round_from"))
+		roundTo, _ := strconv.Atoi(c.QueryParam("round_to"))
 		kind := c.QueryParam("kind")
 
 		if year == 0 {
@@ -70,7 +71,7 @@ func main() {
 			return c.JSON(http.StatusBadRequest, "kind must be 'min' or 'max'")
 		}
 
-		payload := getRecords(round, year, kind)
+		payload := getRecords(roundFrom, roundTo, year, kind)
 		return c.JSON(http.StatusOK, payload)
 	})
 

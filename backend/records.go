@@ -41,35 +41,31 @@ type Records struct {
 //       might need to settle with returning all record values as strings so that we can simply do this
 //       The string concession would also solve our ugly duplicated code situation in this file
 
-func getRecords(round int, year int, kind string) Records {
+func getRecords(roundFrom int, roundTo int, year int, kind string) Records {
 	var records Records
 
-	records.Score = determineRecord(round, year, kind, "rs_score")
-	records.Kicks = determineRecord(round, year, kind, "rs_kicks")
-	records.Handballs = determineRecord(round, year, kind, "rs_handballs")
-	records.Marks = determineRecord(round, year, kind, "rs_marks")
-	records.Hitouts = determineRecord(round, year, kind, "rs_hitouts")
-	records.Tackles = determineRecord(round, year, kind, "rs_tackles")
-	records.DisposalEfficiency = determineRecordFloat(round, year, kind, "rs_disposal_efficiency")
-	records.ContestedPosessions = determineRecord(round, year, kind, "rs_contested_posessions")
-	records.Rebounds = determineRecord(round, year, kind, "rs_rebound_50s")
-	records.Clearances = determineRecord(round, year, kind, "rs_clearances")
-	records.Spoils = determineRecord(round, year, kind, "rs_spoils")
+	records.Score = determineRecord(roundFrom, roundTo, year, kind, "rs_score")
+	records.Kicks = determineRecord(roundFrom, roundTo, year, kind, "rs_kicks")
+	records.Handballs = determineRecord(roundFrom, roundTo, year, kind, "rs_handballs")
+	records.Marks = determineRecord(roundFrom, roundTo, year, kind, "rs_marks")
+	records.Hitouts = determineRecord(roundFrom, roundTo, year, kind, "rs_hitouts")
+	records.Tackles = determineRecord(roundFrom, roundTo, year, kind, "rs_tackles")
+	records.DisposalEfficiency = determineRecordFloat(roundFrom, roundTo, year, kind, "rs_disposal_efficiency")
+	records.ContestedPosessions = determineRecord(roundFrom, roundTo, year, kind, "rs_contested_posessions")
+	records.Rebounds = determineRecord(roundFrom, roundTo, year, kind, "rs_rebound_50s")
+	records.Clearances = determineRecord(roundFrom, roundTo, year, kind, "rs_clearances")
+	records.Spoils = determineRecord(roundFrom, roundTo, year, kind, "rs_spoils")
 
 	return records
 }
 
-func determineRecord(round int, year int, kind string, category string) []Record {
+func determineRecord(roundFrom int, roundTo int, year int, kind string, category string) []Record {
 
 	var rowsOfRoundScoreTable []roundScore
 
 	query := fmt.Sprintf("SELECT rs_c_coach_id, rs_round, %s FROM round_score WHERE rs_year=%d AND %s=(SELECT %s(%s) FROM round_score",
 		category, year, category, kind, category)
-	if round != 0 {
-		query += fmt.Sprintf(" WHERE rs_round=%d) AND rs_round=%d;", round, round)
-	} else {
-		query += ");"
-	}
+	query += fmt.Sprintf(" WHERE rs_round>=%d AND rs_round<=%d) AND rs_round>=%d AND rs_round<=%d;", roundFrom, roundTo, roundFrom, roundTo)
 
 	db := initDb()
 	db.Select(&rowsOfRoundScoreTable, query)
@@ -79,11 +75,7 @@ func determineRecord(round int, year int, kind string, category string) []Record
 	// key we need from rowsOfRoundScoreTable
 	query = fmt.Sprintf("SELECT %s FROM round_score WHERE rs_year=%d AND %s=(SELECT %s(%s) FROM round_score",
 		category, year, category, kind, category)
-	if round != 0 {
-		query += fmt.Sprintf(" WHERE rs_round=%d) AND rs_round=%d LIMIT 1;", round, round)
-	} else {
-		query += ") LIMIT 1;"
-	}
+	query += fmt.Sprintf(" WHERE rs_round>=%d AND rs_round<=%d) AND rs_round>=%d AND rs_round<=%d LIMIT 1;", roundFrom, roundTo, roundFrom, roundTo)
 
 	value64, _ := db.SelectInt(query)
 	value := int(value64)
@@ -104,17 +96,13 @@ func determineRecord(round int, year int, kind string, category string) []Record
 }
 
 // TODO: investigate if there is a better way to do this... sucks to replicate this whole function just because it has a float32 instead of int for value...
-func determineRecordFloat(round int, year int, kind string, category string) []RecordFloat {
+func determineRecordFloat(roundFrom int, roundTo int, year int, kind string, category string) []RecordFloat {
 
 	var rowsOfRoundScoreTable []roundScore
 
 	query := fmt.Sprintf("SELECT rs_c_coach_id, rs_round, %s FROM round_score WHERE rs_year=%d AND %s=(SELECT %s(%s) FROM round_score",
 		category, year, category, kind, category)
-	if round != 0 {
-		query += fmt.Sprintf(" WHERE rs_round=%d) AND rs_round=%d;", round, round)
-	} else {
-		query += ");"
-	}
+	query += fmt.Sprintf(" WHERE rs_round>=%d AND rs_round<=%d) AND rs_round>=%d AND rs_round<=%d;", roundFrom, roundTo, roundFrom, roundTo)
 
 	db := initDb()
 	db.Select(&rowsOfRoundScoreTable, query)
@@ -124,11 +112,7 @@ func determineRecordFloat(round int, year int, kind string, category string) []R
 	// key we need from rowsOfRoundScoreTable
 	query = fmt.Sprintf("SELECT %s FROM round_score WHERE rs_year=%d AND %s=(SELECT %s(%s) FROM round_score",
 		category, year, category, kind, category)
-	if round != 0 {
-		query += fmt.Sprintf(" WHERE rs_round=%d) AND rs_round=%d LIMIT 1;", round, round)
-	} else {
-		query += ") LIMIT 1;"
-	}
+	query += fmt.Sprintf(" WHERE rs_round>=%d AND rs_round<=%d) AND rs_round>=%d AND rs_round<=%d LIMIT 1;", roundFrom, roundTo, roundFrom, roundTo)
 
 	float64, _ := db.SelectFloat(query)
 	value := float32(float64)
