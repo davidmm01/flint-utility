@@ -1,5 +1,7 @@
 package main
 
+// TODO: handle bye rounds in the ladder
+
 // LadderPlace represents the position of a coach on the ladder
 type LadderPlace struct {
 	Coach         string
