@@ -108,4 +108,8 @@ func main() {
 	// TODO: coach table has coach_year, would be good to normalise this and have another table for coach_years or something
 	//       no coach is changing this year though so I have a whole year to worry about this lol but keep it in mind
 
+	// TODO: scoring analysis endpoints
+
+	// TODO: remember we dont have sacko round data yet and wont by the copy+paste
+
 }

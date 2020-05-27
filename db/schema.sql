@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.19, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: FLINT
+-- Host: 127.0.0.1    Database: 
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -10,6 +10,8 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
+/*!50606 SET @OLD_INNODB_STATS_AUTO_RECALC=@@INNODB_STATS_AUTO_RECALC */;
+/*!50606 SET GLOBAL INNODB_STATS_AUTO_RECALC=OFF */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
@@ -72,6 +74,40 @@ LOCK TABLES `coach` WRITE;
 /*!40000 ALTER TABLE `coach` DISABLE KEYS */;
 INSERT INTO `coach` VALUES ('bark','PASSWORD IS BAYSIDE','Marcus',2019),('calv','The Spreadsheet','Lucas',2019),('cost','CostaWhyte','Andy',2019),('davo','flamingos','The Swarm',2019),('doe','Mushroom Alfredo','James',2019),('fewy','The Dow Jones','James',2019),('frank','The Bev Temples','Franco',2019),('gab','Shrooms are great','Gabriel',2019),('jim','Stand By Crouch','jermes',2019),('karl','Bayside City Council','Karl',2019),('kev','Derry Boys','Kevin',2019),('milbs','TOOMUCHDOG','Andrew',2019),('salc','_thebiggerboi_','Chris',2019),('sam','Trunk','Sam',2019),('schlong','Green Heinekens','Jack',2019),('shust','The Faceless Men','shuster',2019),('staff','Costa\'s Shroom Caps ','staffa',2019),('steve','Ardern\'s Army','Steve',2019);
 /*!40000 ALTER TABLE `coach` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lineup_settings`
+--
+
+DROP TABLE IF EXISTS `lineup_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lineup_settings` (
+  `ls_year` int NOT NULL,
+  `ls_backs` int DEFAULT NULL,
+  `ls_centres` int DEFAULT NULL,
+  `ls_rucks` int DEFAULT NULL,
+  `ls_forwards` int DEFAULT NULL,
+  `ls_utilities` int DEFAULT NULL,
+  `ls_backs_em` int DEFAULT NULL,
+  `ls_centres_em` int DEFAULT NULL,
+  `ls_rucks_em` int DEFAULT NULL,
+  `ls_forwards_em` int DEFAULT NULL,
+  `ls_utilities_em` int DEFAULT NULL,
+  `ls_bench` int DEFAULT NULL,
+  PRIMARY KEY (`ls_year`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lineup_settings`
+--
+
+LOCK TABLES `lineup_settings` WRITE;
+/*!40000 ALTER TABLE `lineup_settings` DISABLE KEYS */;
+INSERT INTO `lineup_settings` VALUES (2016,3,3,1,3,1,1,1,1,1,1,0),(2017,3,3,1,3,1,1,1,1,1,1,0),(2018,3,3,1,3,1,1,1,1,1,1,0),(2019,3,3,1,3,2,1,1,1,1,1,0),(2020,3,3,1,3,2,1,1,1,1,1,0);
+/*!40000 ALTER TABLE `lineup_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,7 +210,7 @@ CREATE TABLE `score_settings` (
 
 LOCK TABLES `score_settings` WRITE;
 /*!40000 ALTER TABLE `score_settings` DISABLE KEYS */;
-INSERT INTO `score_settings` VALUES (2019,8,6,6,4,3,4,3,2,1,1,3);
+INSERT INTO `score_settings` VALUES (2016,9,6,6,4,3,4,2,2,1,2,2),(2017,8,6,6,4,3,4,1,2,2,1,2),(2018,7,6,6,4,3,4,2,2,1,1,3),(2019,8,6,6,4,3,4,3,2,1,1,3),(2020,8,6,6,4,3,4,3,2,1,1,3);
 /*!40000 ALTER TABLE `score_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -187,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-04 18:29:25
+-- Dump completed on 2020-05-27

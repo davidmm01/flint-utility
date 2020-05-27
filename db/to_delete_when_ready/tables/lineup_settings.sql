@@ -1,0 +1,8 @@
+--has been run in db
+CREATE TABLE lineup_settings (ls_year INT NOT NULL PRIMARY KEY, ls_backs INT, ls_centres INT, ls_rucks INT, ls_forwards INT, ls_utilities INT, ls_backs_em INT, ls_centres_em INT, ls_rucks_em INT, ls_forwards_em INT, ls_utilities_em INT, ls_bench INT);
+INSERT INTO lineup_settings (ls_year, ls_backs, ls_centres, ls_rucks, ls_forwards, ls_utilities, ls_backs_em, ls_centres_em, ls_rucks_em, ls_forwards_em, ls_utilities_em, ls_bench) VALUES (2020, 3, 3, 1, 3, 2, 1, 1, 1, 1, 1, 0);
+INSERT INTO lineup_settings (ls_year, ls_backs, ls_centres, ls_rucks, ls_forwards, ls_utilities, ls_backs_em, ls_centres_em, ls_rucks_em, ls_forwards_em, ls_utilities_em, ls_bench) VALUES (2019, 3, 3, 1, 3, 2, 1, 1, 1, 1, 1, 0);
+INSERT INTO lineup_settings (ls_year, ls_backs, ls_centres, ls_rucks, ls_forwards, ls_utilities, ls_backs_em, ls_centres_em, ls_rucks_em, ls_forwards_em, ls_utilities_em, ls_bench) VALUES (2018, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO lineup_settings (ls_year, ls_backs, ls_centres, ls_rucks, ls_forwards, ls_utilities, ls_backs_em, ls_centres_em, ls_rucks_em, ls_forwards_em, ls_utilities_em, ls_bench) VALUES (2017, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO lineup_settings (ls_year, ls_backs, ls_centres, ls_rucks, ls_forwards, ls_utilities, ls_backs_em, ls_centres_em, ls_rucks_em, ls_forwards_em, ls_utilities_em, ls_bench) VALUES (2016, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 0);
+--has been run in db
