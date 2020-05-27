@@ -6,7 +6,7 @@ This is a hacktastic project, made with go and react by someone who has never us
 ## Process for adding new round data
 
 1) Create a file called something like "formatter_feeder_rd_x.txt" in the scripts folder (split this out into years eventually)
-2) Copy and paste the right blobs from the ult footy website 
+2) Copy and paste the right blobs from the ult footy website
 3) Check to make sure that disposal efficieny is not tied for any match. If it is, look up who the winner of it is and bump their disposal efficieny by the smallest practical value.  (ult footy is not showing all the digits and awards points even when it looks like a tie)
 4) manipulate the array 'formatter_feeder_files' in the script 'formatter.py' for the desired target(s)
 5) check and make sure all team names are covered by the dict 'coach_map' in 'formatter.py'

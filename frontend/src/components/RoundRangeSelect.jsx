@@ -39,7 +39,7 @@ class RoundRangeSelect extends React.Component {
                                     <ToggleButton 
                                         value={index} 
                                         onChange={() => {this.props.from(index); this.setState({from: index})}} 
-                                        disabled={ (index >= this.state.to )}
+                                        disabled={ (index > this.state.to )}
                                     > {index} </ToggleButton>
                                 ))}
                             </ ToggleButtonGroup>
@@ -56,7 +56,7 @@ class RoundRangeSelect extends React.Component {
                                     <ToggleButton 
                                         value={index} 
                                         onChange={() => {this.props.to(index); this.setState({to: index})}} 
-                                        disabled={ (index <= this.state.from )}
+                                        disabled={ (index < this.state.from )}
                                     > {index} </ToggleButton>
                                 ))}
                             </ ToggleButtonGroup>
