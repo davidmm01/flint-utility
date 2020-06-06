@@ -21,7 +21,103 @@ Add the correctly formatted file to the formatter_feeder_files array below
 """
 
 formatter_feeder_files = [
-    None
+    "round_scores/2020/formatter_feeder_rd_1.txt",
+    
+    "round_scores/2019/formatter_feeder_rd_1.txt",
+    "round_scores/2019/formatter_feeder_rd_2.txt",
+    "round_scores/2019/formatter_feeder_rd_3.txt",
+    "round_scores/2019/formatter_feeder_rd_4.txt",
+    "round_scores/2019/formatter_feeder_rd_5.txt",
+    "round_scores/2019/formatter_feeder_rd_6.txt",
+    "round_scores/2019/formatter_feeder_rd_7.txt",
+    "round_scores/2019/formatter_feeder_rd_8.txt",
+    "round_scores/2019/formatter_feeder_rd_9.txt",
+    "round_scores/2019/formatter_feeder_rd_10.txt",
+    "round_scores/2019/formatter_feeder_rd_11.txt",
+    "round_scores/2019/formatter_feeder_rd_12.txt",
+    "round_scores/2019/formatter_feeder_rd_13.txt",
+    "round_scores/2019/formatter_feeder_rd_14.txt",
+    "round_scores/2019/formatter_feeder_rd_15.txt",
+    "round_scores/2019/formatter_feeder_rd_16.txt",
+    "round_scores/2019/formatter_feeder_rd_17.txt",
+    "round_scores/2019/formatter_feeder_rd_18.txt",
+    "round_scores/2019/formatter_feeder_rd_19.txt",
+    "round_scores/2019/formatter_feeder_rd_20.txt",
+    "round_scores/2019/formatter_feeder_rd_21.txt",
+    "round_scores/2019/formatter_feeder_rd_22.txt",
+    "round_scores/2019/formatter_feeder_rd_23.txt",
+
+    "round_scores/2018/formatter_feeder_rd_1.txt",
+    "round_scores/2018/formatter_feeder_rd_2.txt",
+    "round_scores/2018/formatter_feeder_rd_3.txt",
+    "round_scores/2018/formatter_feeder_rd_4.txt",
+    "round_scores/2018/formatter_feeder_rd_5.txt",
+    "round_scores/2018/formatter_feeder_rd_6.txt",
+    "round_scores/2018/formatter_feeder_rd_7.txt",
+    "round_scores/2018/formatter_feeder_rd_8.txt",
+    "round_scores/2018/formatter_feeder_rd_9.txt",
+    "round_scores/2018/formatter_feeder_rd_10.txt",
+    "round_scores/2018/formatter_feeder_rd_11.txt",
+    "round_scores/2018/formatter_feeder_rd_12.txt",
+    "round_scores/2018/formatter_feeder_rd_13.txt",
+    "round_scores/2018/formatter_feeder_rd_14.txt",
+    "round_scores/2018/formatter_feeder_rd_15.txt",
+    "round_scores/2018/formatter_feeder_rd_16.txt",
+    "round_scores/2018/formatter_feeder_rd_17.txt",
+    "round_scores/2018/formatter_feeder_rd_18.txt",
+    "round_scores/2018/formatter_feeder_rd_19.txt",
+    "round_scores/2018/formatter_feeder_rd_20.txt",
+    "round_scores/2018/formatter_feeder_rd_21.txt",
+    "round_scores/2018/formatter_feeder_rd_22.txt",
+    "round_scores/2018/formatter_feeder_rd_23.txt",
+
+    "round_scores/2017/formatter_feeder_rd_1.txt",
+    "round_scores/2017/formatter_feeder_rd_2.txt",
+    "round_scores/2017/formatter_feeder_rd_3.txt",
+    "round_scores/2017/formatter_feeder_rd_4.txt",
+    "round_scores/2017/formatter_feeder_rd_5.txt",
+    "round_scores/2017/formatter_feeder_rd_6.txt",
+    "round_scores/2017/formatter_feeder_rd_7.txt",
+    "round_scores/2017/formatter_feeder_rd_8.txt",
+    "round_scores/2017/formatter_feeder_rd_9.txt",
+    "round_scores/2017/formatter_feeder_rd_10.txt",
+    "round_scores/2017/formatter_feeder_rd_11.txt",
+    "round_scores/2017/formatter_feeder_rd_12.txt",
+    "round_scores/2017/formatter_feeder_rd_13.txt",
+    "round_scores/2017/formatter_feeder_rd_14.txt",
+    "round_scores/2017/formatter_feeder_rd_15.txt",
+    "round_scores/2017/formatter_feeder_rd_16.txt",
+    "round_scores/2017/formatter_feeder_rd_17.txt",
+    "round_scores/2017/formatter_feeder_rd_18.txt",
+    "round_scores/2017/formatter_feeder_rd_19.txt",
+    "round_scores/2017/formatter_feeder_rd_20.txt",
+    "round_scores/2017/formatter_feeder_rd_21.txt",
+    "round_scores/2017/formatter_feeder_rd_22.txt",
+    "round_scores/2017/formatter_feeder_rd_23.txt",
+
+    "round_scores/2016/formatter_feeder_rd_1.txt",
+    "round_scores/2016/formatter_feeder_rd_2.txt",
+    "round_scores/2016/formatter_feeder_rd_3.txt",
+    "round_scores/2016/formatter_feeder_rd_4.txt",
+    "round_scores/2016/formatter_feeder_rd_5.txt",
+    "round_scores/2016/formatter_feeder_rd_6.txt",
+    "round_scores/2016/formatter_feeder_rd_7.txt",
+    "round_scores/2016/formatter_feeder_rd_8.txt",
+    "round_scores/2016/formatter_feeder_rd_9.txt",
+    "round_scores/2016/formatter_feeder_rd_10.txt",
+    "round_scores/2016/formatter_feeder_rd_11.txt",
+    "round_scores/2016/formatter_feeder_rd_12.txt",
+    "round_scores/2016/formatter_feeder_rd_13.txt",
+    "round_scores/2016/formatter_feeder_rd_14.txt",
+    "round_scores/2016/formatter_feeder_rd_15.txt",
+    "round_scores/2016/formatter_feeder_rd_16.txt",
+    "round_scores/2016/formatter_feeder_rd_17.txt",
+    "round_scores/2016/formatter_feeder_rd_18.txt",
+    "round_scores/2016/formatter_feeder_rd_19.txt",
+    "round_scores/2016/formatter_feeder_rd_20.txt",
+    "round_scores/2016/formatter_feeder_rd_21.txt",
+    "round_scores/2016/formatter_feeder_rd_22.txt",
+    "round_scores/2016/formatter_feeder_rd_23.txt",
 ]
 
 # mapping for going from team name to a coach id as per coach database
@@ -52,6 +148,51 @@ coach_map = {
     'Andrew cant cook': "'frank'",
     "Tanky Longy's Team": "'staff'",
     'Two time': "'frank'",
+    'General Soreness': "'jim'",
+    "Fantasia's Package": "'salc'",
+    "5M0K3 DZA 420 w33d": "'steve'",
+    "The Big Boi": "'calv'",
+    "Wakanda Forever": "'kev'",
+    "Mutley Mob": "'frank'",
+    "Septal Perforation": "'schlong'",
+    "BaysideSlayer_92": "'doe'",
+    "Tim Kelly": "'staff'",
+    "Yarra City Council": "'milbs'",
+    "Sam 'Bags' Murray FC": "'sam'",
+    "Jerk Werts (REVIVAL)": "'jim'",
+    "Libba's Pingas": "'sam'",
+    "Top Up FC": "'salc'",
+    "Gold Logie Winner": "'staff'",
+    "CapaCostaCo": "'cost'",
+    "El Maestro de Chaque": "'frank'",
+    "Yeah LeBois": "'calv'",
+    "Krooooooz": "'fewy'",
+    "Mid Week Rub!!!!": "'milbs'",
+    "woolworths_slayer92": "'doe'",
+    "Tsunami Umami": "'kev'",
+    "Jack Fucking Watts": "'jim'",
+    "Farmer Steve's": "'sam'",
+    "Sponge Leecher": "'doe'",
+    "Josh Kennedy": "'fewy'",
+    "Brown Richardsons": "'davo'",
+    "Elite salesmen": "'gab'",
+    "PASSWORD IS RE-CALC": "'bark'",
+    "Chum Frenzied Sharks": "'karl'",
+    "It's A Friendly Game": "'calv'",
+    "Milby/Staffa 2016": "'staff'",
+    "The Board": "'milbs'",
+    "Relaunch Complete": "'frank'",
+    "Allahu Akbar": "'schlong'",
+    "Cara Delevingne": "'kev'",
+    "Lone Wolf": "'jim'",
+    "Toxic Masculinity": "'calv'",
+    "Auto-Draft, Auto-Win": "'fewy'",
+    "Lick My Butt Hole": "'milbs'",
+    "Piggy’s Army": "'frank'",
+    "Team Deadly": "'doe'",
+    "Whyte": "'cost'",
+    "shrooms are great": "'gab'",
+
 }
 
 script_args = {
@@ -84,8 +225,7 @@ for file in formatter_feeder_files:
     while line:
 
         line_as_list = line.split('\t')  # each element in the row is separated by tabs
-        del line_as_list[-1]  # last element 'score' is not used 
-
+                
         # remove leading and trialing whitespace
         for i in range(len(line_as_list)):
             line_as_list[i] = line_as_list[i].strip()
@@ -95,13 +235,13 @@ for file in formatter_feeder_files:
         line_as_list[7] = "0" + line_as_list[7]  # prepend a 0 to the disposal efficiency
 
         # format for the sql
-        sql_start = "INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils) VALUES ("
+        sql_start = "INSERT INTO round_score (rs_round, rs_year, rs_c_coach_id, rs_score, rs_kicks, rs_handballs, rs_marks, rs_hitouts, rs_tackles, rs_disposal_efficiency, rs_contested_posessions, rs_rebound_50s, rs_clearances, rs_spoils, rs_real_value) VALUES ("
         sql_end = ");"
 
         sql_middle = round + ', ' + year + ', '
         for i in range(len(line_as_list)):
             sql_middle = sql_middle + line_as_list[i]
-            if i != 11:
+            if i != len(line_as_list) - 1:
                 sql_middle = sql_middle + ', '
 
         sql = sql_start + sql_middle + sql_end
@@ -135,7 +275,7 @@ for file in formatter_feeder_files:
     f.close()
     print()
 
-engine = create_engine("mysql+pymysql://devbox:123@/FLINT")  # PyMySQL driver required
+engine = create_engine("mysql+pymysql://root:123@localhost/FLINT?host=localhost?port=3306")  # PyMySQL driver required
 
 with engine.connect() as con:
 
