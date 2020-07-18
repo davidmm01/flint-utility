@@ -2,20 +2,23 @@
 
 ## How to collect data for the script
 
-visit ultimate footy
-log in and select flint mich league
-select league overview
-scroll down to history tab
-and select the season you want (click the year)
+### Set Up
 
-For each match, of each round, of each year, we collect the data into a file and folder structure like `year/rd_x/game_y`
+* Visit ultimate footy
+* Log in and select flint mich league
+* Select league overview
+* Scroll down to history tab, and select the season you want (click the year)
+* For each match, of each round, of each year, we collect the data into a file and folder structure like `year/rd_x/game_y`.  For an example of this see the folder see `flint-utility/scripts/round_by_players`
+
+### Gathering the data
 
 Collect the data for each game by:
-opening the matchup summary of the game
-Right click on the page and select Inspect Element.  This will open up the HTML inspector.  Leave this pane open as you move onto more matches
-Under the main `<body>` tag you should see in green (a comment) `<!-- Ultimate Sports ================================================== -->`
-Expand the container underneath this comment.
 
-Inside this expanded container you should see `<!-- Game Content ================================================== -->`
-Right click on the `<div class="row">...</div>` directly below the Game Content comment, and select Copy > Inner HTML
-Paste this into the file game_y
+* Open the matchup summary of the game
+* Right click on the page and select Inspect Element.  This will open up the HTML inspector.  Leave this pane open as you move onto more matches
+* Under the main `<body>` tag you should see in green (a comment) `<!-- Ultimate Sports ================================================== -->`
+* Expand the container underneath this comment.
+* Inside this expanded container you should see `<!-- Game Content ================================================== -->`
+* Right click on the `<div class="row">...</div>` directly below the Game Content comment, and select Copy > Inner HTML
+* Paste this into the file game_y
+* Repeat for every game of every year! Navigate to other matches and rounds by using the round summary table
