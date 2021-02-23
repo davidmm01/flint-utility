@@ -1,0 +1,1826 @@
+
+            <div class="col-md-12">
+                    
+
+                                                
+    <div class="text-center" style="font-weight: bold; cursor: pointer; padding-top: 6px; padding-bottom: 10px;" id="atg-button" data-toggle="collapse" data-target="#collapse-atg" role="button" aria-expanded="true" aria-controls="collapse-atg" data-remote="/127052/matchups/3">
+        Round 3 Matches <i id="atg-chevron" class="fa fa-fw fa-chevron-down" style="margin-left: 2px;" aria-hidden="true"></i>
+    </div>
+
+    <div id="collapse-atg" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-atg">
+        <div id="matchup-widget-content">
+        </div>
+    </div>
+
+    <!-- Nav tabs -->
+    <div class="text-center" style="margin-bottom: 10px;">
+        <div class="btn-group" data-toggle="btns">
+            <a class="btn btn-default " href="#progress-pane" data-toggle="tab">Scores</a>
+            <a class="btn btn-default active " href="#recap-pane" data-toggle="tab">Votes</a>
+        </div>
+        <div class="btn-group pull-right" style="margin-left: -100%">
+            <a class="chat-button btn btn-default active" aria-pressed="true" data-toggle="button"><i class="fa fa-comments" aria-hidden="true"></i><span class="hidden-xs"> Chat</span></a>
+        </div>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane " id="progress-pane">
+        <div class="row">
+            <div class="col-xs-6 text-right">
+                <h4>
+                    <a href="/127052/1">Stand By Crouch</a>
+                </h4>
+            </div>
+            <div class="col-xs-6 text-left">
+                <h4>
+                    <a href="/127052/2">Green Heinekens</a>
+                </h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3 text-left" style="line-height: 17px;">
+                <div class="score_for_191773 team-actual">
+                    22
+                </div>
+                <div class="team-proj">
+                                                                        <span data-toggle="tooltip" data-placement="right" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="Projected score 10">10</span>
+                                                            </div>
+            </div>
+            <div class="col-xs-3 text-right">
+                <img src="//static.ultimatefooty.com.au/uf2/img/logos/user/34/163293.png" class="logo-circle" style="height: 34px; width: 34px; margin-right: 5px;">
+            </div>
+            <div class="col-xs-3 text-left">
+                                    <img src="//static.ultimatefooty.com.au/us/img/logos/default/34/footy_04.png" class="logo-circle" style="height: 36px; width: 36px; margin-right: 5px;">
+                            </div>
+            <div class="col-xs-3 text-right" style="line-height: 17px;">
+                <div class="score_for_193689 team-actual">
+                    19
+                </div>
+                <div class="team-proj">
+                                                                        <span data-toggle="tooltip" data-placement="left" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="Projected score 31">31</span>
+                                                            </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 5px;">
+            <div class="col-xs-6 text-right">
+                <p class="small">
+                    <span data-toggle="tooltip" data-placement="bottom" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="0 players yet to start"><span class="playstatus-indicator playstatus-yettoplay"></span> <span id="yet_to_play_count_191773">0</span></span>
+                    <span data-toggle="tooltip" data-placement="bottom" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="0 players in progress"><span class="playstatus-indicator playstatus-inprogress"></span> <span id="in_progress_count_191773">0</span></span>
+                    <span data-toggle="tooltip" data-placement="bottom" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="12 players completed"><span class="playstatus-indicator playstatus-played"></span>  <span id="complete_count_191773">12</span></span>
+                </p>
+            </div>
+            <div class="col-xs-6 text-left">
+                <p class="small">
+                    <span data-toggle="tooltip" data-placement="bottom" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="12 players completed"><span class="playstatus-indicator playstatus-played"></span> <span id="complete_count_193689">12</span></span>
+                    <span data-toggle="tooltip" data-placement="bottom" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="0 players in progress"><span class="playstatus-indicator playstatus-inprogress"></span> <span id="in_progress_count_193689">0</span></span>
+                    <span data-toggle="tooltip" data-placement="bottom" data-delay="{&quot;show&quot;:&quot;300&quot;, &quot;hide&quot;:&quot;0&quot;}" title="" data-original-title="0 players yet to start"><span class="playstatus-indicator playstatus-yettoplay"></span> <span id="yet_to_play_count_193689">0</span></span>
+                </p>
+            </div>
+        </div>
+      </div>
+      <div class="tab-pane active" id="recap-pane">
+                    <div class="row">
+    <div class="col-sm-2 text-right hidden-xs">
+        <img src="//static.ultimatefooty.com.au/uf2/img/logos/user/70/163293.png" class="logo-circle" style="height: 70px; width: 70px; margin-right: 5px; margin-top: 17px;">
+    </div>
+    <div class="col-sm-8">
+        <table class="table table-condensed table-borderless table-matchup">
+            <tbody>
+                <tr class="hidden-xs">
+                    <td class="text-right" style="width: 40%">
+                        <h4 style="font-size: 24px;"><a href="/127052/1">Stand By Crouch</a></h4>
+                    </td>
+                    <td class="text-center" style="width: 20%"><small>VS</small></td>
+                    <td class="text-left" style="width: 40%">
+                        <h4 style="font-size: 24px;"><a href="/127052/2">Green Heinekens</a></h4>
+                    </td>
+                </tr>
+                <tr class="hidden-sm hidden-md">
+                    <td class="text-right" style="width: 40%">
+                        <h4><a href="/127052/1">Stand By Crouch</a></h4>
+                        <img src="//static.ultimatefooty.com.au/uf2/img/logos/user/34/163293.png" class="logo-circle" style="height: 34px; width: 34px;">
+                    </td>
+                    <td class="text-center" style="width: 20%"><small>VS</small></td>
+                    <td class="text-left" style="width: 40%">
+                        <h4><a href="/127052/2">Green Heinekens</a></h4>
+                        <img src="//static.ultimatefooty.com.au/us/img/logos/default/34/footy_04.png" class="logo-circle" style="height: 34px; width: 34px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right">
+                                                                                    <div>3. Brad Crouch</div>
+                                                            <div>2. Tim Taranto</div>
+                                                                        </td>
+                    <td class="text-muted text-center"><small>Votes</small></td>
+                    <td class="text-left">
+                                                                                    <div>1. Jack Macrae</div>
+                                                                        </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-2 text-left hidden-xs">
+        <img src="//static.ultimatefooty.com.au/us/img/logos/default/70/footy_04.png" class="logo-circle" style="height: 70px; width: 70px; margin-right: 5px; margin-top: 17px;">
+    </div>
+</div>
+
+              </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" style="padding: 4px;">
+            <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="active">
+                        <th></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Scoreboard Impact">SCOR</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Kicks">KI</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Handballs">HB</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Marks">MA</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Hitouts">HO</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Tackles">TA</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Disposal Efficiency">D%</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Contested Possessions">CP</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Rebound 50s">R50</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Clearances">CL</span></th>
+                                                    <th class="text-right"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Spoils">SP</span></th>
+                                                <th class="text-right">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="team_191773_totals">
+                        <td><strong>Stand By Crouch</strong></td>
+                                                                                    <td class="text-right category-win" data-cat="1">15-7 (97)</td>
+                                                                                                                <td class="text-right category-win" data-cat="3">131</td>
+                                                                                                                <td class="text-right " data-cat="4">77</td>
+                                                                                                                <td class="text-right " data-cat="5">41</td>
+                                                                                                                <td class="text-right category-win" data-cat="6">52</td>
+                                                                                                                <td class="text-right category-win" data-cat="7">41</td>
+                                                                                                                <td class="text-right " data-cat="16">.663</td>
+                                                                                                                <td class="text-right " data-cat="17">85</td>
+                                                                                                                <td class="text-right category-win" data-cat="23">16</td>
+                                                                                                                <td class="text-right " data-cat="24">26</td>
+                                                                                                                <td class="text-right " data-cat="29">20</td>
+                                                                                                        <td class="text-right warning score_for_191773" style="font-weight: bold;">22</td>
+                                            </tr>
+                    <tr id="team_193689_totals">
+                        <td><strong>Green Heinekens</strong></td>
+                                                                                    <td class="text-right " data-cat="1">11-9 (75)</td>
+                                                                                                                <td class="text-right " data-cat="3">130</td>
+                                                                                                                <td class="text-right category-win" data-cat="4">109</td>
+                                                                                                                <td class="text-right category-win" data-cat="5">44</td>
+                                                                                                                <td class="text-right " data-cat="6">24</td>
+                                                                                                                <td class="text-right " data-cat="7">38</td>
+                                                                                                                <td class="text-right category-win" data-cat="16">.715</td>
+                                                                                                                <td class="text-right category-win" data-cat="17">105</td>
+                                                                                                                <td class="text-right " data-cat="23">15</td>
+                                                                                                                <td class="text-right category-win" data-cat="24">34</td>
+                                                                                                                <td class="text-right category-win" data-cat="29">21</td>
+                                                                                                        <td class="text-right warning score_for_193689" style="font-weight: bold;">19</td>
+                                            </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <button id="matchup-btn-refresh" type="button" class="btn btn-default btn-block" style="margin-bottom: 10px; padding: 10px 12px; border-color: #DDDDDD;"><span id="refresh-text" style="color: #666666;">Refresh</span> <i class="fa fa-refresh xpull-right" style="margin-left: 4px; color: #666666;" aria-hidden="true"></i></button>
+
+            <div class="btn-group btn-group-justified visible-xs-block" style="margin-bottom: 10px;" data-toggle="buttons">
+                <label class="btn btn-success active show1">Stand By Crouch <input type="radio" name="options" id="option1" autocomplete="off" checked="checked"></label>
+                <label class="btn btn-success show2">Green Heinekens <input type="radio" name="options" id="option2" autocomplete="off"></label>
+            </div>
+
+            <div class="table-responsive">
+            <table class="table table-condensed" style="border-collapse: inherit;">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr class="active">
+                        <td class="team1-player">Player</td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Scoreboard Impact">SCOR</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Kicks">KI</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Handballs">HB</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Marks">MA</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Hitouts">HO</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Tackles">TA</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Disposal Efficiency">D%</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Contested Possessions">CP</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Rebound 50s">R50</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Clearances">CL</span></td>
+                                                    <td class="text-right team1-player"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Spoils">SP</span></td>
+                                                <td class="hidden-xs"></td>
+                        <td class="team2-player hidden-xs">Player</td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Scoreboard Impact">SCOR</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Kicks">KI</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Handballs">HB</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Marks">MA</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Hitouts">HO</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Tackles">TA</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Disposal Efficiency">D%</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Contested Possessions">CP</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Rebound 50s">R50</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Clearances">CL</span></td>
+                                                    <td class="text-right team2-player hidden-xs"><span title="" data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="Spoils">SP</span></td>
+                                            </tr>
+                    <tr class="active hide">
+                        <th colspan="50" class="text-center">Starters</th>
+                    </tr>
+                                                                                    
+                            <tr>
+                                                            
+            <td id="player_1618" class="text-left player scoring team1-player player_1618">
+                <a href="/players/1618" data-playerid="1618" data-player-popup-target="/players/1618/card?l=127052" data-player-modal-target="/players/1618/modal?l=127052"><span class="fullname hidden-xs hidden-sm">James Sicily</span><span class="visible-xs-inline visible-sm-inline">J. Sicily</span></a>
+    
+<br>
+<small>W, 87-71 vs NM</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="3">
+                                            17
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="4">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="5">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="7">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="16">
+                                            .909
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="17">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="23">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1618" data-cat="29">
+                                            4
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>B</small></td>
+
+                                                            
+            <td id="player_610" class="text-left player scoring player_610 team2-player hidden-xs">
+                <a href="/players/610" data-playerid="610" data-player-popup-target="/players/610/card?l=127052" data-player-modal-target="/players/610/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Matthew Suckling</span><span class="visible-xs-inline visible-sm-inline">M. Suckling</span></a>
+    
+<br>
+<small>L, 68-73 vs GC</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="1">
+                                            1-0 (6)
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="3">
+                                            14
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="4">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="5">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="16">
+                                            .895
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="17">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="23">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_610 player-stat team2-player hidden-xs" data-cat="29">
+                                            2
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                                            
+            <td id="player_1634" class="text-left player scoring team1-player player_1634">
+                <a href="/players/1634" data-playerid="1634" data-player-popup-target="/players/1634/card?l=127052" data-player-modal-target="/players/1634/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Harris Andrews</span><span class="visible-xs-inline visible-sm-inline">H. Andrews</span></a>
+    
+<br>
+<small>W, 107-90 vs PA</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="3">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="4">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="5">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="7">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="16">
+                                            .875
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="17">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1634" data-cat="29">
+                                            6
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>B</small></td>
+
+                                                            
+            <td id="player_1818" class="text-left player scoring player_1818 team2-player hidden-xs">
+                <a href="/players/1818" data-playerid="1818" data-player-popup-target="/players/1818/card?l=127052" data-player-modal-target="/players/1818/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Wayne Milera</span><span class="visible-xs-inline visible-sm-inline">W. Milera</span></a>
+    
+<br>
+<small>L, 75-99 vs GE</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="3">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="4">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="5">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="7">
+                                            10
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="16">
+                                            .810
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="17">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="23">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="24">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1818 player-stat team2-player hidden-xs" data-cat="29">
+                                            4
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                                            
+            <td id="player_1545" class="text-left player scoring team1-player player_1545">
+                <a href="/players/1545" data-playerid="1545" data-player-popup-target="/players/1545/card?l=127052" data-player-modal-target="/players/1545/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Darcy Byrne-Jones</span><span class="visible-xs-inline visible-sm-inline">D. Byrne-Jones</span></a>
+    
+<br>
+<small>L, 90-107 @ BL</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="3">
+                                            15
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="4">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="5">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="7">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="16">
+                                            .667
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="17">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="24">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1545" data-cat="29">
+                                            2
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>B</small></td>
+
+                                                            
+            <td id="player_1330" class="text-left player scoring player_1330 team2-player hidden-xs">
+                <a href="/players/1330" data-playerid="1330" data-player-popup-target="/players/1330/card?l=127052" data-player-modal-target="/players/1330/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Adam Kennedy</span><span class="visible-xs-inline visible-sm-inline">A. Kennedy</span></a>
+    
+<br>
+<small>W, 125-76 vs RI</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="3">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="4">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="5">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="7">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="16">
+                                            .684
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="17">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="23">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1330 player-stat team2-player hidden-xs" data-cat="29">
+                                            0
+                                    </td>
+                        </tr>
+
+                                                                                                        
+                            <tr>
+                                                            
+            <td id="player_729" class="text-left player scoring team1-player player_729">
+                <a href="/players/729" data-playerid="729" data-player-popup-target="/players/729/card?l=127052" data-player-modal-target="/players/729/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Trent Cotchin</span><span class="visible-xs-inline visible-sm-inline">T. Cotchin</span></a>
+            <a href="/players/729?tab=news" data-playerid="729" data-player-popup-target="/players/729/card?l=127052&amp;tab=news" data-player-modal-target="/players/729/modal?l=127052&amp;tab=news" style="margin-left: 2px; color: #FF0500;"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+    
+<br>
+<small>L, 76-125 @ GWS</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="3">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="4">
+                                            9
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="5">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="16">
+                                            .545
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="17">
+                                            9
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="23">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="24">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_729" data-cat="29">
+                                            0
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>C</small></td>
+
+                                                            
+            <td id="player_1469" class="text-left player scoring player_1469 team2-player hidden-xs">
+                <a href="/players/1469" data-playerid="1469" data-player-popup-target="/players/1469/card?l=127052" data-player-modal-target="/players/1469/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Jack Macrae</span><span class="visible-xs-inline visible-sm-inline">J. Macrae</span></a>
+    
+<br>
+<small>L, 68-73 vs GC</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="3">
+                                            15
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="4">
+                                            18
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="5">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="7">
+                                            9
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="16">
+                                            .818
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="17">
+                                            14
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="24">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_1469 player-stat team2-player hidden-xs" data-cat="29">
+                                            0
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                                            
+            <td id="player_1436" class="text-left player scoring team1-player player_1436">
+                <a href="/players/1436" data-playerid="1436" data-player-popup-target="/players/1436/card?l=127052" data-player-modal-target="/players/1436/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Brad Crouch</span><span class="visible-xs-inline visible-sm-inline">B. Crouch</span></a>
+    
+<br>
+<small>L, 66-71 @ FR</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="1">
+                                            1-1 (7)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="3">
+                                            18
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="4">
+                                            17
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="5">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="7">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="16">
+                                            .571
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="17">
+                                            11
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="23">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="24">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1436" data-cat="29">
+                                            0
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>C</small></td>
+
+                                                            
+            <td id="player_1195" class="text-left player scoring player_1195 team2-player hidden-xs">
+                <a href="/players/1195" data-playerid="1195" data-player-popup-target="/players/1195/card?l=127052" data-player-modal-target="/players/1195/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Sam Menegola</span><span class="visible-xs-inline visible-sm-inline">S. Menegola</span></a>
+    
+<br>
+<small>W, 99-75 @ AD</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="1">
+                                            1-2 (8)
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="3">
+                                            16
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="4">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="5">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="7">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="16">
+                                            .609
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="17">
+                                            12
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="24">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_1195 player-stat team2-player hidden-xs" data-cat="29">
+                                            4
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                                            
+            <td id="player_1974" class="text-left player scoring team1-player player_1974">
+                <a href="/players/1974" data-playerid="1974" data-player-popup-target="/players/1974/card?l=127052" data-player-modal-target="/players/1974/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Tim Taranto</span><span class="visible-xs-inline visible-sm-inline">T. Taranto</span></a>
+    
+<br>
+<small>W, 125-76 vs RI</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="1">
+                                            2-0 (12)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="3">
+                                            17
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="4">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="5">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="7">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="16">
+                                            .567
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="17">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="24">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1974" data-cat="29">
+                                            1
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>C</small></td>
+
+                                
+            <td id="player_822" class="text-left player non-scoring player_822 team2-player hidden-xs">
+                <a href="/players/822" data-playerid="822" data-player-popup-target="/players/822/card?l=127052" data-player-modal-target="/players/822/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Callan Ward</span><span class="visible-xs-inline visible-sm-inline">C. Ward</span></a>
+    
+<br>
+<small>W, 125-76 vs RI</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="1">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="3">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="4">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="5">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="6">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="7">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="16">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="17">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="23">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="24">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_822 player-stat team2-player hidden-xs" data-cat="29">
+                                            -
+                                    </td>
+                        </tr>
+
+                                                                                                        
+                            <tr>
+                                                            
+            <td id="player_1413" class="text-left player scoring team1-player player_1413">
+                <a href="/players/1413" data-playerid="1413" data-player-popup-target="/players/1413/card?l=127052" data-player-modal-target="/players/1413/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Jarrod Witts</span><span class="visible-xs-inline visible-sm-inline">J. Witts</span></a>
+    
+<br>
+<small>W, 73-68 @ WB</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="3">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="4">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="5">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="6">
+                                            52
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="7">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="16">
+                                            .636
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="17">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="24">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1413" data-cat="29">
+                                            0
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>R</small></td>
+
+                                                            
+            <td id="player_555" class="text-left player scoring player_555 team2-player hidden-xs">
+                <a href="/players/555" data-playerid="555" data-player-popup-target="/players/555/card?l=127052" data-player-modal-target="/players/555/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Patrick Ryder</span><span class="visible-xs-inline visible-sm-inline">P. Ryder</span></a>
+    
+<br>
+<small>L, 66-71 @ FR</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="1">
+                                            3-0 (18)
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="3">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="4">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="5">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="6">
+                                            24
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="16">
+                                            .700
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="17">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="24">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_555 player-stat team2-player hidden-xs" data-cat="29">
+                                            8
+                                    </td>
+                        </tr>
+
+                                                                                                        
+                            <tr>
+                                                            
+            <td id="player_1190" class="text-left player scoring team1-player player_1190">
+                <a href="/players/1190" data-playerid="1190" data-player-popup-target="/players/1190/card?l=127052" data-player-modal-target="/players/1190/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Tom McDonald</span><span class="visible-xs-inline visible-sm-inline">T. McDonald</span></a>
+    
+<br>
+<small>L, 112-130 vs ES</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="3">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="4">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="5">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="16">
+                                            .833
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="17">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1190" data-cat="29">
+                                            1
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>F</small></td>
+
+                                                            
+            <td id="player_966" class="text-left player scoring player_966 team2-player hidden-xs">
+                <a href="/players/966" data-playerid="966" data-player-popup-target="/players/966/card?l=127052" data-player-modal-target="/players/966/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Jack Ziebell</span><span class="visible-xs-inline visible-sm-inline">J. Ziebell</span></a>
+    
+<br>
+<small>L, 71-87 @ HW</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="1">
+                                            2-2 (14)
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="3">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="4">
+                                            11
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="5">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="16">
+                                            .583
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="17">
+                                            12
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="24">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_966 player-stat team2-player hidden-xs" data-cat="29">
+                                            0
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                                            
+            <td id="player_1654" class="text-left player scoring team1-player player_1654">
+                <a href="/players/1654" data-playerid="1654" data-player-popup-target="/players/1654/card?l=127052" data-player-modal-target="/players/1654/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Jordan de Goey</span><span class="visible-xs-inline visible-sm-inline">J. de Goey</span></a>
+    
+<br>
+<small>L, 76-98 vs WC</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="1">
+                                            3-1 (19)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="3">
+                                            15
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="4">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="5">
+                                            7
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="7">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="16">
+                                            .667
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="17">
+                                            9
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1654" data-cat="29">
+                                            1
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>F</small></td>
+
+                                                            
+            <td id="player_1894" class="text-left player scoring player_1894 team2-player hidden-xs">
+                <a href="/players/1894" data-playerid="1894" data-player-popup-target="/players/1894/card?l=127052" data-player-modal-target="/players/1894/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Zac Fisher</span><span class="visible-xs-inline visible-sm-inline">Z. Fisher</span></a>
+    
+<br>
+<small>L, 74-93 vs SY</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="1">
+                                            1-1 (7)
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="3">
+                                            10
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="4">
+                                            9
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="5">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="7">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="16">
+                                            .632
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="17">
+                                            14
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="23">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="24">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player_1894 player-stat team2-player hidden-xs" data-cat="29">
+                                            0
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                
+            <td id="player_959" class="text-left player non-scoring team1-player player_959">
+                <a href="/players/959" data-playerid="959" data-player-popup-target="/players/959/card?l=127052" data-player-modal-target="/players/959/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Jack Watts</span><span class="visible-xs-inline visible-sm-inline">J. Watts</span></a>
+    
+<br>
+<small>L, 90-107 @ BL</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="1">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="3">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="4">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="5">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="6">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="7">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="16">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="17">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="23">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="24">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_959" data-cat="29">
+                                            -
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>F</small></td>
+
+                                                            
+            <td id="player_2091" class="text-left player scoring player_2091 team2-player hidden-xs">
+                <a href="/players/2091" data-playerid="2091" data-player-popup-target="/players/2091/card?l=127052" data-player-modal-target="/players/2091/modal?l=127052"><span class="fullname hidden-xs hidden-sm">James Worpel</span><span class="visible-xs-inline visible-sm-inline">J. Worpel</span></a>
+    
+<br>
+<small>W, 87-71 vs NM</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-1 (1)
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="3">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="4">
+                                            19
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="5">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="7">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="16">
+                                            .778
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="17">
+                                            13
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="24">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player_2091 player-stat team2-player hidden-xs" data-cat="29">
+                                            1
+                                    </td>
+                        </tr>
+
+                                                                                                        
+                            <tr>
+                                                            
+            <td id="player_1180" class="text-left player scoring team1-player player_1180">
+                <a href="/players/1180" data-playerid="1180" data-player-popup-target="/players/1180/card?l=127052" data-player-modal-target="/players/1180/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Tom Lynch</span><span class="visible-xs-inline visible-sm-inline">T. Lynch</span></a>
+    
+<br>
+<small>L, 76-125 @ GWS</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="1">
+                                            4-1 (25)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="3">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="4">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="5">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="7">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="16">
+                                            .444
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="17">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1180" data-cat="29">
+                                            3
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>UTL</small></td>
+
+                                                            
+            <td id="player_1834" class="text-left player scoring player_1834 team2-player hidden-xs">
+                <a href="/players/1834" data-playerid="1834" data-player-popup-target="/players/1834/card?l=127052" data-player-modal-target="/players/1834/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Tom Phillips</span><span class="visible-xs-inline visible-sm-inline">T. Phillips</span></a>
+    
+<br>
+<small>W, 87-71 vs NM</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-1 (1)
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="3">
+                                            10
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="4">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="5">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="7">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="16">
+                                            .643
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="17">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="24">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_1834 player-stat team2-player hidden-xs" data-cat="29">
+                                            0
+                                    </td>
+                        </tr>
+
+                                                                    
+                            <tr>
+                                                            
+            <td id="player_1314" class="text-left player scoring team1-player player_1314">
+                <a href="/players/1314" data-playerid="1314" data-player-popup-target="/players/1314/card?l=127052" data-player-modal-target="/players/1314/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Aaron Hall</span><span class="visible-xs-inline visible-sm-inline">A. Hall</span></a>
+    
+<br>
+<small>L, 71-87 @ HW</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="1">
+                                            1-3 (9)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="3">
+                                            10
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="4">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="5">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="7">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="16">
+                                            .688
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="17">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="24">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_1314" data-cat="29">
+                                            0
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>UTL</small></td>
+
+                                                            
+            <td id="player_2017" class="text-left player scoring player_2017 team2-player hidden-xs">
+                <a href="/players/2017" data-playerid="2017" data-player-popup-target="/players/2017/card?l=127052" data-player-modal-target="/players/2017/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Luke Davies-Uniacke</span><span class="visible-xs-inline visible-sm-inline">L. Davies-Uniacke</span></a>
+    
+<br>
+<small>L, 71-87 @ HW</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="3">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="4">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="5">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="16">
+                                            .889
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="17">
+                                            4
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="24">
+                                            1
+                                    </td>
+                            <td class="text-right scoring player_2017 player-stat team2-player hidden-xs" data-cat="29">
+                                            2
+                                    </td>
+                        </tr>
+
+                                    
+                                    <tr class="active">
+                        <th colspan="50" class="text-center">Emergencies</th>
+                    </tr>
+                                                                                                                                        
+                                    <tr>
+                    <td class="text-left proj-stat player empty team1-player">-- empty --</td>
+            <td class="text-right empty team1-player" colspan="11"></td>
+        
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>B</small></td>
+
+                                
+            <td id="player_1581" class="text-left player non-scoring player_1581 team2-player hidden-xs">
+                <a href="/players/1581" data-playerid="1581" data-player-popup-target="/players/1581/card?l=127052" data-player-modal-target="/players/1581/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Jake Kelly</span><span class="visible-xs-inline visible-sm-inline">J. Kelly</span></a>
+    
+<br>
+<small>L, 75-99 vs GE</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="3">
+                                            5
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="4">
+                                            6
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="5">
+                                            2
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="7">
+                                            3
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="16">
+                                            .727
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="17">
+                                            5
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right non-scoring player_1581 player-stat team2-player hidden-xs" data-cat="29">
+                                            8
+                                    </td>
+                        </tr>
+
+                                                                                                                                                
+                                    <tr>
+                    <td class="text-left proj-stat player empty team1-player">-- empty --</td>
+            <td class="text-right empty team1-player" colspan="11"></td>
+        
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>C</small></td>
+
+                                                            
+            <td id="player_1565" class="text-left player scoring player_1565 team2-player hidden-xs">
+                <a href="/players/1565" data-playerid="1565" data-player-popup-target="/players/1565/card?l=127052" data-player-modal-target="/players/1565/modal?l=127052"><span class="fullname hidden-xs hidden-sm">James Harmes</span><span class="visible-xs-inline visible-sm-inline">J. Harmes</span></a>
+    
+<br>
+<small>L, 112-130 vs ES</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="1">
+                                            3-2 (20)
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="3">
+                                            12
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="4">
+                                            9
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="5">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="7">
+                                            6
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="16">
+                                            .571
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="17">
+                                            11
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="24">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player_1565 player-stat team2-player hidden-xs" data-cat="29">
+                                            0
+                                    </td>
+                        </tr>
+
+                                                                                                                                                
+                                    <tr>
+                                
+            <td id="player_1720" class="text-left player non-scoring team1-player player_1720">
+                <a href="/players/1720" data-playerid="1720" data-player-popup-target="/players/1720/card?l=127052" data-player-modal-target="/players/1720/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Reilly O'Brien</span><span class="visible-xs-inline visible-sm-inline">R. O'Brien</span></a>
+    
+<br>
+<small>L, 75-99 vs GE</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="1">
+                                            0-0 (0)
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="3">
+                                            5
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="4">
+                                            6
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="5">
+                                            3
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="6">
+                                            28
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="7">
+                                            3
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="16">
+                                            .818
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="17">
+                                            8
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="23">
+                                            1
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="24">
+                                            5
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_1720" data-cat="29">
+                                            2
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>R</small></td>
+
+                                
+            <td id="player_1884" class="text-left player non-scoring player_1884 team2-player hidden-xs">
+                <a href="/players/1884" data-playerid="1884" data-player-popup-target="/players/1884/card?l=127052" data-player-modal-target="/players/1884/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Sean Darcy</span><span class="visible-xs-inline visible-sm-inline">S. Darcy</span></a>
+    
+<br>
+<small>W, 71-66 vs SK</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="1">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="3">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="4">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="5">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="6">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="7">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="16">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="17">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="23">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="24">
+                                            -
+                                    </td>
+                            <td class="text-right non-scoring player_1884 player-stat team2-player hidden-xs" data-cat="29">
+                                            -
+                                    </td>
+                        </tr>
+
+                                                                                                                                                
+                                    <tr>
+                                                            
+            <td id="player_903" class="text-left player scoring team1-player player_903">
+                <a href="/players/903" data-playerid="903" data-player-popup-target="/players/903/card?l=127052" data-player-modal-target="/players/903/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Shaun McKernan</span><span class="visible-xs-inline visible-sm-inline">S. McKernan</span></a>
+    
+<br>
+<small>L, 66-71 @ FR</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="1">
+                                            4-1 (25)
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="3">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="4">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="5">
+                                            5
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="7">
+                                            3
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="16">
+                                            .846
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="17">
+                                            8
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="24">
+                                            0
+                                    </td>
+                            <td class="text-right scoring player-stat team1-player player_903" data-cat="29">
+                                            2
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>F</small></td>
+
+                                
+            <td id="player_1751" class="text-left player non-scoring player_1751 team2-player hidden-xs">
+                <a href="/players/1751" data-playerid="1751" data-player-popup-target="/players/1751/card?l=127052" data-player-modal-target="/players/1751/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Peter Wright</span><span class="visible-xs-inline visible-sm-inline">P. Wright</span></a>
+    
+<br>
+<small>W, 130-112 @ ME</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="1">
+                                            0-1 (1)
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="3">
+                                            9
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="4">
+                                            2
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="5">
+                                            6
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="6">
+                                            19
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="16">
+                                            .636
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="17">
+                                            5
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="24">
+                                            1
+                                    </td>
+                            <td class="text-right non-scoring player_1751 player-stat team2-player hidden-xs" data-cat="29">
+                                            3
+                                    </td>
+                        </tr>
+
+                                                                                                                                                
+                                    <tr>
+                                
+            <td id="player_767" class="text-left player non-scoring team1-player player_767">
+                <a href="/players/767" data-playerid="767" data-player-popup-target="/players/767/card?l=127052" data-player-modal-target="/players/767/modal?l=127052"><span class="fullname hidden-xs hidden-sm">Chris Mayne</span><span class="visible-xs-inline visible-sm-inline">C. Mayne</span></a>
+    
+<br>
+<small>L, 76-98 vs WC</small>
+
+
+
+                
+                
+            </td>
+
+            
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="1">
+                                            0-1 (1)
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="3">
+                                            13
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="4">
+                                            11
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="5">
+                                            8
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="6">
+                                            0
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="7">
+                                            2
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="16">
+                                            .750
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="17">
+                                            7
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="23">
+                                            0
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="24">
+                                            2
+                                    </td>
+                            <td class="text-right non-scoring player-stat team1-player player_767" data-cat="29">
+                                            0
+                                    </td>
+                    
+        <td class="active text-center hidden-xs" style="padding: 2px;"><small>UTL</small></td>
+
+                    <td class="text-left proj-stat player empty team2-player hidden-xs">-- empty --</td>
+            <td class="text-right empty team2-player hidden-xs" colspan="11"></td>
+            </tr>
+
+                                                                                                        </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    
+            </div>
+        
