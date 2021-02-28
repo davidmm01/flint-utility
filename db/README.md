@@ -26,11 +26,11 @@ TODO: test and confirm this section, only docker instructions are confirmed to w
 
 To install:
 
-`sudo apt install -y mysql-server`  
+`sudo apt install -y mysql-server`
 
 To start the mysql server:
 
-`sudo /etc/init.d/mysql start`  TODO verify this
+`sudo /etc/init.d/mysql start` TODO verify this
 
 To push the schema into it:
 
