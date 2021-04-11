@@ -4,7 +4,12 @@ import os
 import re
 
 
-def get_data(year, round, game):
+def get_data(year: int, round: int, game: int):
+    """Get all the match and player data for a given match. Returns a with the following structure:
+        meta: dict of metadata, including `year`, `round` and `game`
+        totals: dict of 
+    
+    """
     logging.info(f"get_data called with year={year}, round={round}, game={game}")
 
     filename = f"round_by_players/{year}/rd_{round}/game_{game}"
@@ -222,6 +227,13 @@ def get_data(year, round, game):
             logging.warning(
                 f"year={year}, round={round}, game={game}, category={category}, anomoly: {int(totals[1][category])} vs {running_tally_team_2[category]}"
             )
+    
+    return {
+        "meta": dict(year=year, round=round, game=game),
+        "totals": totals,
+        "team_1_players": team_1_players,
+        "team_2_players": team_2_players,
+    }
 
 
 def main():
@@ -245,7 +257,7 @@ def main():
                 continue
 
             for game in range(1, games + 1):
-                get_data(setting["year"], round_, game)
+                data = get_data(setting["year"], round_, game)
 
 
 if __name__ == "__main__":
