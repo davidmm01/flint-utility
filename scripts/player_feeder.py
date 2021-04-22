@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from argparse import ArgumentParser
 import logging
 import os
 import re
@@ -17,7 +18,7 @@ def get_data(year: int, round: int, game: int):
         filename += ".txt"
 
     if not os.path.exists(filename):
-        logging.debug(f"file not found for year={year}, round={round}, game={game}")
+        logging.warning(f"file not found for year={year}, round={round}, game={game}")
         return
 
     with open(filename, "r") as f:
@@ -227,7 +228,7 @@ def get_data(year: int, round: int, game: int):
             logging.warning(
                 f"year={year}, round={round}, game={game}, category={category}, anomoly: {int(totals[1][category])} vs {running_tally_team_2[category]}"
             )
-    
+
     return {
         "meta": dict(year=year, round=round, game=game),
         "totals": totals,
@@ -236,29 +237,48 @@ def get_data(year: int, round: int, game: int):
     }
 
 
+def traverse_dir_recur(dir_):
+    l = os.listdir(dir_)
+    for d in l:
+        if os.path.isdir(dir_ + d):
+            traverse_dir_recur(dir_+  d +"/")
+        else:
+            year, round_, game = process_path(dir_ + d)
+            get_data(year, round_, game)
+
+
+def process_path(path):
+    path_split = path.split("/")
+    year = int(path_split[1])
+    round_ = int(path_split[2].lstrip("rd_"))
+    game = int(path_split[3].lstrip("game_").rstrip(".txt"))
+    return year, round_, game
+
+
+path_help = (
+    "Path of data. If given a directory will recursively process all files." \
+    "This argument expects to be run from the location of this script, i.e. all " \
+    "paths should start with round_by_players as the names of the year and round " \
+    "directories will be used as part of result intepretation."
+)
+
+
 def main():
-    logging.basicConfig(level=logging.INFO)
+    # command line options
+    parser = ArgumentParser(description="TODO: some pretty description here")
+    parser.add_argument('database', type=str, help="Path to target sqlite3 database")
+    parser.add_argument('path', type=str, help=path_help)
+    parser.add_argument('-c', '--commit', action='store_true', help='Providing this flag will cause all data to be comitted to the database without prompting.')
+    parser.add_argument('-l', '--logging', type=int, default=20, help='set log level (default INFO=20)')
 
-    # int keys in settings dict indicate number of games in special rounds
-    settings = [
-        {"year": 2016, "rounds": 23, 20: 8, 21: 6, 22: 6, 23: 4},
-        {"year": 2017, "rounds": 23, 20: 8, 21: 6, 22: 6, 23: 4},
-        {"year": 2018, "rounds": 23, 20: 8, 21: 6, 22: 6, 23: 4},
-        {"year": 2019, "rounds": 23, 20: 8, 21: 6, 22: 6, 23: 4},
-        {"year": 2020, "rounds": 18, 14: 8, 15: 0, 16: 6, 17: 6, 18: 4},
-    ]
+    args = parser.parse_args()
 
-    for setting in settings:
-        for round_ in range(1, setting["rounds"] + 1):
-            games = setting.get(round_, 9)
+    logging.basicConfig(level=args.logging)
 
-            # account for round 15 of 2020 without any games
-            if games == 0:
-                continue
+    if not args.path.endswith("/"):
+        args.path += "/"
 
-            for game in range(1, games + 1):
-                data = get_data(setting["year"], round_, game)
-
+    traverse_dir_recur(args.path)
 
 if __name__ == "__main__":
     main()
