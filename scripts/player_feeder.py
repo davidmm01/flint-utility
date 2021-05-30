@@ -3,6 +3,84 @@ from argparse import ArgumentParser
 import logging
 import os
 import re
+import sqlite3
+
+
+coach_map = {
+    'Stand By Crouch': "'jim'",
+    'Green Heinekens': "'schlong'",
+    'TOOMUCHDOG': "'milbs'",
+    'Bayside City Council':  "'karl'",
+    '_thebiggerboi_': "'salc'",
+    'The Bev Temples': "'frank'",
+    'The Dow Jones': "'fewy'",
+    'Mushroom Alfredo': "'doe'",
+    'The Faceless Men': "'shust'",
+    'CostaWhyte':  "'cost'",
+    "Costa's Shroom Caps": "'staff'",
+    'Trunk': "'sam'",
+    'Derry Boys': "'kev'",
+    'The Spreadsheet': "'calv'",
+    'Shrooms are great': "'gab'",
+    "Ardern's Army": "'steve'",
+    'flamingos': "'davo'",
+    'PASSWORD IS BAYSIDE': "'bark'",
+    'Yablett': "'staff'",
+    'Swimming... And Tits': "'milbs'",
+    'BunkoutWithBurnout!': "'frank'",
+    'Disown Team': "'milbs'",
+    'Andrew cant cook': "'frank'",
+    "Tanky Longy's Team": "'staff'",
+    'Two time': "'frank'",
+    'General Soreness': "'jim'",
+    "Fantasia's Package": "'salc'",
+    "5M0K3 DZA 420 w33d": "'steve'",
+    "The Big Boi": "'calv'",
+    "Wakanda Forever": "'kev'",
+    "Mutley Mob": "'frank'",
+    "Septal Perforation": "'schlong'",
+    "BaysideSlayer_92": "'doe'",
+    "Tim Kelly": "'staff'",
+    "Yarra City Council": "'milbs'",
+    "Sam 'Bags' Murray FC": "'sam'",
+    "Jerk Werts (REVIVAL)": "'jim'",
+    "Libba's Pingas": "'sam'",
+    "Top Up FC": "'salc'",
+    "Gold Logie Winner": "'staff'",
+    "CapaCostaCo": "'cost'",
+    "El Maestro de Chaque": "'frank'",
+    "Yeah LeBois": "'calv'",
+    "Krooooooz": "'fewy'",
+    "Mid Week Rub!!!!": "'milbs'",
+    "woolworths_slayer92": "'doe'",
+    "Tsunami Umami": "'kev'",
+    "Jack Fucking Watts": "'jim'",
+    "Farmer Steve's": "'sam'",
+    "Sponge Leecher": "'doe'",
+    "Josh Kennedy": "'fewy'",
+    "Brown Richardsons": "'davo'",
+    "Elite salesmen": "'gab'",
+    "PASSWORD IS RE-CALC": "'bark'",
+    "Chum Frenzied Sharks": "'karl'",
+    "It's A Friendly Game": "'calv'",
+    "Milby/Staffa 2016": "'staff'",
+    "The Board": "'milbs'",
+    "Relaunch Complete": "'frank'",
+    "Allahu Akbar": "'schlong'",
+    "Cara Delevingne": "'kev'",
+    "Lone Wolf": "'jim'",
+    "Toxic Masculinity": "'calv'",
+    "Auto-Draft, Auto-Win": "'fewy'",
+    "Lick My Butt Hole": "'milbs'",
+    "Piggy’s Army": "'frank'",
+    "Team Deadly": "'doe'",
+    "Whyte": "'cost'",
+    "shrooms are great": "'gab'",
+    "City of Kingston": "'karl'",
+    "Your Honor": "'frank'",
+    "Sack DA": "'milbs'",
+    "PASSWORD IS KINGSTON": "'bark'",
+}
 
 
 def get_data(year: int, round: int, game: int):
@@ -237,14 +315,40 @@ def get_data(year: int, round: int, game: int):
     }
 
 
-def traverse_dir_recur(dir_):
-    l = os.listdir(dir_)
-    for d in l:
-        if os.path.isdir(dir_ + d):
-            traverse_dir_recur(dir_+  d +"/")
-        else:
-            year, round_, game = process_path(dir_ + d)
-            get_data(year, round_, game)
+# {
+#     'meta': {'year': 2017, 'round': 4, 'game': 7}, 
+#     'totals': [
+#         {'team_name': "Libba's Pingas", 'goals': '7', 'behinds': '6', 'score': '48', 'kicks': '114', 'hbs': '125', 'marks': '44', 'hitouts': '33', 'tackles': '32', 'disp_eff': '.695', 'contesteds': '92', 'rebounds': '18', 'clearances': '27', 'spoils': '15', 'total': '26'},
+#         {'team_name': 'Tsunami Umami', 'goals': '7', 'behinds': '7', 'score': '49', 'kicks': '113', 'hbs': '85', 'marks': '41', 'hitouts': '27', 'tackles': '37', 'disp_eff': '.773', 'contesteds': '68', 'rebounds': '14', 'clearances': '26', 'spoils': '10', 'total': '13'}], 
+#     ...
+# }   
+
+def add_to_db(db, data):
+    # print("connecting to db")
+    con = sqlite3.connect(db)
+    # print("here is data:")
+    # print(data)
+
+    team_1_coach = coach_map[data["totals"][0]["team_name"]]
+    team_2_coach = coach_map[data["totals"][1]["team_name"]]
+
+    # add to round matchup
+    round_matchup_sql = (
+        "INSERT INTO round_matchup (rm_year, rm_round, rm_game, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (" \
+        f"{data['meta']['year']}, " \
+        f"{data['meta']['round']}, " \
+        f"{data['meta']['game']}, " \
+        f"{team_1_coach}, " \
+        f"{team_2_coach}" \
+        ");"
+    )
+    print(round_matchup_sql)
+
+    # add to round data for each team
+    round_score_sqls = []
+
+    # add to player data for each team
+    player_score_sqls = []
 
 
 def process_path(path):
@@ -278,7 +382,29 @@ def main():
     if not args.path.endswith("/"):
         args.path += "/"
 
-    traverse_dir_recur(args.path)
+    files = []
+
+    def traverse_dir_recur(dir_):
+        try:
+            l = os.listdir(dir_)
+        except NotADirectoryError:
+            files.append(dir_)
+            return
+
+        for d in l:
+            if os.path.isdir(dir_ + d):
+                traverse_dir_recur(dir_+  d +"/")
+            else:
+                files.append(dir_ + d)
+
+    traverse_dir_recur(args.path)  # populate `files` list
+
+    for file_ in files:
+        year, round_, game = process_path(file_)
+        data = get_data(year, round_, game)
+        add_to_db(args.database, data)
+
+
 
 if __name__ == "__main__":
     main()

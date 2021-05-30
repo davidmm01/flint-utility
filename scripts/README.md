@@ -25,4 +25,5 @@ Collect the data for each game by:
 
 ## Running the script
 
-- create (`python3 -m venv venv`) or activate (`source venv/bin/activate`) the virtual environment
+- create (`python3 -m venv venv`) then activate (`source venv/bin/activate`) the virtual environment
+- run the script `python3 player_feeder.py <DB NAME> <PATH OF TARGET DATA> [-c --commit] [-l --logging]`
