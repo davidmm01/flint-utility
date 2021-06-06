@@ -84,10 +84,51 @@ coach_map = {
 
 
 def get_data(year: int, round: int, game: int):
-    """Get all the match and player data for a given match. Returns a with the following structure:
-        meta: dict of metadata, including `year`, `round` and `game`
-        totals: dict of 
-    
+    """Get all the match and player data for a given match. Returns a dict with the following structure:
+        {
+            'meta': {'year': int, 'round': int, 'game': int},
+            'totals': [  # 2 elements, first == team 1, second == team 2
+                {
+                    'team_name': str,
+                    'goals': str,
+                    'behinds': str,
+                    'score': str,
+                    'kicks': str,
+                    'hbs': str,
+                    'marks': str,
+                    'hitouts': str,
+                    'tackles': str,
+                    'disp_eff': str,
+                    'contesteds': str,
+                    'rebounds': str,
+                    'clearances': str,
+                    'spoils': str,
+                    'total': str,
+                },
+            ],
+            'team_1_players': [  # one for each recorded player
+                {
+                    'position': str,
+                    'name': str,
+                    'goals': str,
+                    'behinds': str,
+                    'score': str,
+                    'kicks': str,
+                    'hbs': str,
+                    'marks': str,
+                    'hitouts': str,
+                    'tackles': str,
+                    'disp_eff': str,
+                    'contesteds': str,
+                    'rebounds': str,
+                    'clearances': str,
+                    'spoils': str,
+                    'scoring': bool,
+                }
+            ],
+            'team_2_players': [{}]  # same as 'team_1_players'
+        }
+        Note that lots of values are strings, but not all
     """
     logging.info(f"get_data called with year={year}, round={round}, game={game}")
 
@@ -315,19 +356,9 @@ def get_data(year: int, round: int, game: int):
     }
 
 
-# {
-#     'meta': {'year': 2017, 'round': 4, 'game': 7}, 
-#     'totals': [
-#         {'team_name': "Libba's Pingas", 'goals': '7', 'behinds': '6', 'score': '48', 'kicks': '114', 'hbs': '125', 'marks': '44', 'hitouts': '33', 'tackles': '32', 'disp_eff': '.695', 'contesteds': '92', 'rebounds': '18', 'clearances': '27', 'spoils': '15', 'total': '26'},
-#         {'team_name': 'Tsunami Umami', 'goals': '7', 'behinds': '7', 'score': '49', 'kicks': '113', 'hbs': '85', 'marks': '41', 'hitouts': '27', 'tackles': '37', 'disp_eff': '.773', 'contesteds': '68', 'rebounds': '14', 'clearances': '26', 'spoils': '10', 'total': '13'}], 
-#     ...
-# }   
-
 def add_to_db(db, data):
-    # print("connecting to db")
+    logging.debug("connecting to db")
     con = sqlite3.connect(db)
-    # print("here is data:")
-    # print(data)
 
     team_1_coach = coach_map[data["totals"][0]["team_name"]]
     team_2_coach = coach_map[data["totals"][1]["team_name"]]
@@ -335,6 +366,7 @@ def add_to_db(db, data):
     # add to round matchup
     round_matchup_sql = (
         "INSERT INTO round_matchup (rm_year, rm_round, rm_game, rm_c_coach_id_1, rm_c_coach_id_2) VALUES (" \
+        # rm_id autoincrements
         f"{data['meta']['year']}, " \
         f"{data['meta']['round']}, " \
         f"{data['meta']['game']}, " \
@@ -342,10 +374,35 @@ def add_to_db(db, data):
         f"{team_2_coach}" \
         ");"
     )
-    print(round_matchup_sql)
+    logging.debug(round_matchup_sql)
 
     # add to round data for each team
     round_score_sqls = []
+    for index, coach in enumerate((team_1_coach, team_2_coach)):
+        round_score_sqls.append(
+            "INSERT INTO round_score (" \
+            "'rs_year', 'rs_round', 'rs_game', 'rs_c_coach_id', 'rs_score', 'rs_kicks', 'rs_handballs', 'rs_marks'," \
+            "'rs_hitouts', 'rs_tackles', 'rs_disposal_efficiency', 'rs_contested_posessions', 'rs_rebound_50s', 'rs_clearances'," \
+            " 'rs_spoils', 'rs_real_value') VALUES (" \
+            # rs_id autoincrements
+            f"{data['meta']['year']}, "  # rs_year
+            f"{data['meta']['round']}, "  # rs_round
+            f"{data['meta']['game']}, "  # rs_game
+            f"{coach}, "  # rs_c_coach_id
+            f"{data['totals'][index]['score']}, "  # rs_score
+            f"{data['totals'][index]['kicks']}, "  # rs_kicks
+            f"{data['totals'][index]['hbs']}, "  # rs_handballs
+            f"{data['totals'][index]['marks']}, "  # rs_marks
+            f"{data['totals'][index]['hitouts']}, "  # rs_hitouts
+            f"{data['totals'][index]['tackles']}, "  # rs_tackles
+            f"{data['totals'][index]['disp_eff']}, "  # rs_disposal_efficiency
+            f"{data['totals'][index]['contesteds']}, "  # rs_contested_posessions
+            f"{data['totals'][index]['rebounds']}, "  # rs_rebound_50s
+            f"{data['totals'][index]['clearances']}, "  # rs_clearances
+            f"{data['totals'][index]['spoils']}, "  # rs_spoils
+            f"{data['totals'][index]['total']}"  # rs_real_value
+            ");"
+        )
 
     # add to player data for each team
     player_score_sqls = []
