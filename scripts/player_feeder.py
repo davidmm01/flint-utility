@@ -403,9 +403,55 @@ def add_to_db(db, data):
             f"{data['totals'][index]['total']}"  # rs_real_value
             ");"
         )
+        logging.debug(round_score_sqls[-1])
 
     # add to player data for each team
     player_score_sqls = []
+    for index, team in enumerate(("team_1_players", "team_2_players")):
+        for player in data[team]:
+            score = player['score'].replace("-", "null")
+            kicks = player['kicks'].replace("-", "null")
+            hbs = player['hbs'].replace("-", "null")
+            marks = player['marks'].replace("-", "null")
+            hitouts = player['hitouts'].replace("-", "null")
+            tackles = player['tackles'].replace("-", "null")
+            disp_eff = player['disp_eff']
+            # handle difference between 0 possession game and not played at all
+            if disp_eff == "-":
+                if kicks == '0' and marks == '0':
+                    disp_eff = "0"
+                else:
+                    disp_eff = "null"
+            contesteds = player['contesteds'].replace("-", "null")
+            rebounds = player['rebounds'].replace("-", "null")
+            clearances = player['clearances'].replace("-", "null")
+            spoils = player['spoils'].replace("-", "null")
+            sql = (
+                "INSERT INTO player_score (ps_year, ps_round, ps_game, ps_c_coach_id, ps_player, "
+                "ps_score, ps_kicks, ps_handballs, ps_marks, ps_hitouts, ps_tackles, "
+                "ps_disposal_efficiency, ps_contested_posessions, ps_rebound_50s, "
+                "ps_clearances, ps_spoils) VALUES ("
+                # ps_id autoincrements
+                f"{data['meta']['year']}, "  # ps_year
+                f"{data['meta']['round']}, "  # ps_round
+                f"{data['meta']['game']}, "  # ps_game
+                f"{coach_map[data['totals'][index]['team_name']]}, "  # ps_c_coach_id
+                f"{player['name']}, " # ps_player
+                f"{score}, "  # ps_score
+                f"{kicks}, "  # ps_kicks
+                f"{hbs}, "  # ps_handballs
+                f"{marks}, "  # ps_marks
+                f"{hitouts}, "  # ps_hitouts
+                f"{tackles}, "  # ps_tackles
+                f"{disp_eff}, "  # ps_disposal_efficiency
+                f"{contesteds}, "  # ps_contested_posessions
+                f"{rebounds}, "  # ps_rebound_50s
+                f"{clearances}, "  # ps_clearances
+                f"{spoils}"  #  ps_spoils
+                ");"
+            )
+            player_score_sqls.append(sql)
+            logging.debug(sql)
 
 
 def process_path(path):
